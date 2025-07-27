@@ -2,6 +2,20 @@
 html {
     font-size: 22px;
 }
+
+article ol li a {
+    text-decoration: underline;
+}
+
+h2 {
+    text-decoration: underline;
+}
+nav li a {
+    text-decoration: underline;
+    color: white; /* Optioneel, zorg dat het matcht met je ontwerp */
+}
+
+
 body {
     color: #eee;
     background: #222;
