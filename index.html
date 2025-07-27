@@ -17,18 +17,18 @@
         <header>
             <h1>Welcome to my website!</h1>
             <nav>
-                <ul style="display: flex; align-items: center; gap: 1em;">
+                <ul class="nav-list">
                     <li><a href="/">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact-me.html">Contact</a></li>
-                    <li style="margin-left: 1em;">
-                        <form id="searchForm" style="display: flex; align-items: center; position: relative;">
-                            <input type="text" id="searchInput" placeholder="Search on title..." style="height: 1.5em;">
-                            <button type="submit" style="margin-left: 0.3em;">Search</button>
-                        </form>
-                    </li>
                 </ul>
+                <form id="searchForm" class="nav-search">
+                    <input type="text" id="searchInput" placeholder="Search on title...">
+                    <button type="submit">Search</button>
+                </form>
             </nav>
+
+ 
         </header>
         <main>
             <article>
