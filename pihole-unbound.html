@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="DarkNet444">
+        <meta name="description" content="This is a blog about how I install Pi-hole with Unbound.">
+        <title>Pi-hole and Unbound</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+
+    <body>
+        <header>
+            <h1>
+               How I Install Pi-hole with Unbound
+            </h1>
+            
+            <nav>
+                <ul style="display: flex; align-items: center; gap: 1em;">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact-me.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <h3>Table of Contents</h3>
+                <ol>
+                    <li><a href="#Installing-ubuntu-server">Installing Ubuntu Server</a></li>
+                    <li><a href="#Installing-&-Setting-up-Pi-hole-on-Ubuntu-server.">Installing & Setting Up Pi-hole on Ubuntu Server</a></li>
+                    <li>Install and Configure Unbound</li>
+                </ol>
+            </article>
+            <article>
+                <h4>Description</h4>
+                <p>In these articles, I will teach you how to set up an <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b> with 
+                    <b>Pi-hole</b> and <b>Unbound</b>. 
+                    The benefits are that you will have an ad blocker for your whole home network and your own DNS server with DNSSEC, 
+                    thanks to Unbound and Pi-hole. This will improve your privacy and speed up your local network.
+                </p>
+            
+            <table>
+                <caption>Here is a table with some statistics from my own Pi-hole server.</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Total Queries</td> <td>1,601</td></tr>
+                <tr><td>Total Blocked Domains in Pi-hole</td> <td>191</td></tr>
+                <tr><td>Percentage Blocked</td> <td>10.8%</td></tr>
+                <tr><td>Domains on Ad Lists</td> <td>7,566,706</td></tr>
+                </tbody>
+            <tfoot>
+                <tr><td colspan="2">That's why I love Pi-hole.</td></tr>
+            </tfoot>
+            </table>
+            <p></p>
+            </article>
+            <article id="Installing-ubuntu-server">
+                <h4>Installing Ubuntu Server</h4>
+                <p>I have already written an article on how to set up an
+                    <a href="ubuntu-server.html">Installing & Configuring Ubuntu Server</a>. Check it out.</p>
+            </article>
+            <article id="Installing-&-Setting-up-Pi-hole-on-Ubuntu-server.">
+                <h4>Installing & Setting Up Pi-hole on Ubuntu Server</h4>
+                <p>To install Pi-hole, run 'curl -sSL https://install.pi-hole.net | bash'</p>
+                <img class="img" src="img/pihole-and-unbound/pihole-install-curl.png" alt="Running curl -sSL https://install.pi-hole.net | bash"
+                title="Installing Pi-hole in tty" width="755" height="470">
+            </article>
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>&copy; <a href="about.html">DarkNet444</a></li>
+                    <li><a href="#top">Back to top</a></li>  
+                </ul>
+            </nav>
+        </footer>
+
+    </body>
+</html>

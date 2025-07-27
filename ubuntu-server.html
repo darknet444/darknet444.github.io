@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="DarkNet444">
+        <meta name="description" content="This is a guide on how to configure and install Ubuntu Server">
+        <title>Ubuntu Server</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    
+    <body>
+        <header>
+            <!-- Find a better way to center the welcome message -->
+            <h1>Installing & Configuring Ubuntu Server</h1>
+            
+            <nav>
+                <ul style="display: flex; align-items: center; gap: 1em;">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact-me.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+        </header>
+        <main>
+               <p></p>
+               <article>
+                <h3>Table of Contents</h3>
+                <ol>
+                    <li><a href="#Grabbing-Files">Grabbing Files</a></li>
+                    <li><a href="#Creating-a-bootable-usb-drive-with-Ventoy">Creating a Bootable USB Drive with Ventoy</a></li>
+                    <li><a href="#Running-the-installer-and-installing-Ubuntu">Running the Installer and Installing Ubuntu</a></li>
+                    <li><a href="#Now-it's-time-to-configure-Ubuntu-updates-and-update-Ubuntu-packages.">Now It's Time to Configure Ubuntu Updates and Update Ubuntu Packages</a></li>
+                    <li><a href="#No-auto-reboot-after-installing-updates">Change Settings to NOT Auto-Reboot After Installing Updates</a></li>
+                    <li><a href="#Lets-change-the-time.">Let's Change the Time</a></li>
+                </ol>
+                </article>
+                <p></p>
+                <article>
+                    <h4>Description</h4>
+                    <p>I will teach you how to set up an <b><abbr title="Ubuntu Server 24.04 LTSC">Ubuntu Server</abbr></b>. 
+                        I will show you how I configure updates, time, and SSH. 
+                        This is a good starting point for your first home lab. From there, you can start building higher.
+                     </p>
+                </article>
+                <p></p>
+                <article id="Grabbing-Files">
+                <h4>Grabbing Files</h4>
+                <p>
+                    Let's first start with grabbing the ISO and Ventoy so we can boot our live environment.
+                    Here you can download the <a href="https://ubuntu.com/download/server">Ubuntu Server ISO</a>.
+                    Here you can download <a href="https://www.ventoy.net/en/download.html">Ventoy</a> for making a bootable USB drive.
+                    Store these files in your download directory.
+                </p>
+                </article>
+                <p></p>
+                <article id="Creating-a-bootable-usb-drive-with-Ventoy">
+                
+                <h4>Creating a Bootable USB Drive with Ventoy</h4>
+                
+                <p> First, in Windows, we need to right-click on the file 
+                    and select "Extract All."
+                    After that, run Ventoy2Disk as admin.
+                </p>
+                    <img class=img src="img/ubuntu-server/extract-windows-ventoy.png" alt="Extract Windows Ventoy" 
+                    title="Right-click to extract Ventoy" height="443" width="712">
+                <hr>
+                <p>
+                    In Linux, you will need to install tar and then run `tar -xvf ventoy*`.
+                    After that, you can run VentoyGUI with `./VentoyGUI.x86_64`.
+                </p>
+                    <img class=img  src="img/ubuntu-server/extract-linux-ventoy.png" alt="Extract Linux Ventoy"
+                    title="Extract Ventoy using tar" height="443" width="712">
+                <hr>
+               <p>
+                After you have Ventoy open, select your USB drive and 
+                click on "Install". This will wipe everything from your 
+                USB drive, so make sure to back up any data that you 
+                have on your USB drive.
+               </p> 
+               <img class=img src="img/ubuntu-server/ventoy-gui.png" alt="Ventoy GUI" title="Ventoy GUI" height="443"
+               width="712">  
+               <hr>
+                <p>Now you can copy the ISO file to your Ventoy USB drive. 
+                After that, you can reboot your PC and press the F key 
+                to boot from the USB drive. I apologize for not being 
+                able to specify which F key to press, as it varies 
+                depending on your specific motherboard. I recommend 
+                checking your PC's manual or motherboard manual or manufacturer's website for 
+                information on how to access the boot menu and select a 
+                different boot device.
+                </p>            
+                <img class=img src="img/ubuntu-server/ubuntu-iso-to-ventoy-linux.png" alt="Copy Ubuntu ISO to Ventoy"
+                title="Copy Ubuntu ISO to Ventoy on Linux" height="443" width="712">
+                <img class=img src="img/ubuntu-server/ubuntu-iso-to-ventoy-windows.png" alt="Copy Ubuntu ISO to Ventoy"
+                title="Copy Ubuntu ISO to Ventoy on Windows" height="443" width="712">
+                </article>
+                <p></p>
+                <article id="Running-the-installer-and-installing-Ubuntu">             
+                <h4>Running the Installer and Installing Ubuntu</h4>
+                
+                <p>After booting the Live ISO, run the installer and select 
+                   what suits you, such as language, timezone, username, 
+                   and password.
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-language.png" alt="Select language in Ubuntu installer"
+                title="Select language in Ubuntu installer" height="443" width="712">
+                <hr>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-keyboard-layout.png" alt="Select keyboard layout in Ubuntu installer"
+                title="Select keyboard layout in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>I recommend selecting the "Minimal Install" option and 
+                    installing third-party drivers.
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-download-option.png" alt="Select download options in Ubuntu installer"
+                title="Select download options in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>I always set a static IP address on my server. This will 
+                    make it easier to access your services later.
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-change-ipv4.png" alt="Change IPv4 address in Ubuntu installer"
+                title="Change IPv4 address in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>Change the IP address to be the same as your subnet's. 
+                    This is an example.
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-change-ipv4-static.png" alt="Change IPv4 to static in Ubuntu installer"
+                title="Change IPv4 to static in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>Then, apply your changes and continue with the installer.</p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-update-mirrors.png" alt="Update mirrors in Ubuntu installer"
+                title="Update mirrors in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>I recommend that beginners select the default options, 
+                    while more advanced users may want to consider using 
+                    RAID or ZFS. 
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-partition-drive.png" alt="Select partition layout in Ubuntu installer"
+                title="Select partition layout in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>If everything looks correct, you can press Done and continue.</p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-check-partition-layout.png" alt="Check partition layout in Ubuntu installer"
+                title="Check partition layout in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>Now, select the username and password.</p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-username.png" alt="Select username, hostname, password in Ubuntu installer"
+                title="Select username, hostname, password in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>Now, continue with the installation process.</p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-pro.png" alt="Select username, hostname, password in Ubuntu installer"
+                title="Select username, hostname, password in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>I recommend installing SSH, it will make it easier to remotely control your server.</p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-ssh.png" alt="Select username, hostname, password in Ubuntu installer"
+                title="Select username, hostname, password in Ubuntu installer" height="443" width="712">
+                <hr>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-select-package.png" alt="Select packages in Ubuntu installer"
+                title="Select packages in Ubuntu installer" height="443" width="712">
+                <hr>
+                <p>Now that the installation process is complete, you can 
+                    reboot your server and safely remove or unplug your USB drive.
+                </p>
+                <img class=img src="img/ubuntu-server/ubuntu-installer-done-reboot.png" alt="Select packages in Ubuntu installer"
+                title="Select packages in Ubuntu installer" height="443" width="712">
+                <h4>Congratulations! You have successfully installed Ubuntu Server!</h4>
+                </article>
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>&copy; <a href="about.html">DarkNet444</a></li>
+                    <li><a href="#top">Back to top</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

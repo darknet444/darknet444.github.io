@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="DarkNet444">
+        <meta name="description" content="This is my main page of my website.">
+        <title>My little website</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    
+    <body>
+        <header>
+            <h1>Welcome to my website!</h1>
+            <nav>
+                <ul style="display: flex; align-items: center; gap: 1em;">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact-me.html">Contact</a></li>
+                    <li style="margin-left: 1em;">
+                        <form id="searchForm" style="display: flex; align-items: center; position: relative;">
+                            <input type="text" id="searchInput" placeholder="Search on title..." style="height: 1.5em;">
+                            <button type="submit" style="margin-left: 0.3em;">Search</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <a href="ubuntu-desktop.html"><h2>How to install and configure Ubuntu Desktop.</h2></a>
+                <img src="img/ubuntu-desktop-logo.png" alt="Ubuntu Desktop logo" title="Ubuntu Desktop"
+                width="150" height="111">   
+                <p>In this article, I will teach you how to install and configure <b><abbr title="Ubuntu Desktop 24.04 LTS">Ubuntu Desktop</abbr></b>.
+                   You will learn how to set up your system, configure updates, and personalize your desktop environment.
+                </p>
+            </article>
+            <article>
+                <a href="ubuntu-server.html"><h2>This is how I install and configure an Ubuntu server.</h2></a>
+                <img src="img/ubuntu-server-logo.png" alt="Ubuntu server logo" title="Ubuntu server"
+                width="235" height="105">   
+                <p>I will teach you how to set up an <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b>. 
+                   I will show you how I configure updates, time, and SSH. 
+                   This is a good starting point for your first home lab. From there, you can start building higher.
+                </p>
+            </article>
+            <article>
+                <a href="pihole-unbound.html"><h2>How to install Pi-hole with Unbound.</h2></a>
+                <img src="img/pihole-logo.png" alt="Pi-hole logo" title="Pi-hole DNS"
+                width="118" height="114">   
+                <img src="img/unbound-logo.png" alt="Unbound DNS logo" title="Unbound DNS" width="118" height="114"> 
+                <p>In these articles, I will teach you how to set up an <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b> with 
+                <b>Pi-hole</b> and <b>Unbound</b>. 
+                The benefits are that you will have an ad blocker for your whole home network and your own DNS server with DNSSEC, 
+                thanks to Unbound and Pi-hole. This will improve your privacy and speed up your local network.
+                </p>        
+            </article>
+            <article>
+                <a href="nfs.html"><h2>How to set up NFS on Ubuntu server.</h2></a>
+                <img src="img/nfs-logo.png" alt="NFS logo" title="Network File System (NFS)" 
+                width="118" height="118">
+                <img src="img/ubuntu-logo.png" alt="Ubuntu logo" title="Ubuntu Logo 24.04"
+                width="118" height="118">
+                <p>Here I will teach you how you can host your own file server, also known as <b>
+                <abbr title="Network File System">NFS</abbr></b>, and how you
+                can install <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b>.
+                </p>
+            </article>
+
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>&copy; <a href="about.html">DarkNet444</a></li>
+                    <li><a href="#top">Back to top</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script>
+        const articles = [
+            {
+                title: 'How to install and configure Ubuntu Desktop.',
+                url: 'ubuntu-desktop.html'
+            },
+            {
+                title: 'This is how I install and configure an Ubuntu server.',
+                url: 'ubuntu-server.html'
+            },
+            {
+                title: 'How to install Pi-hole with Unbound.',
+                url: 'pihole-unbound.html'
+            },
+            {
+                title: 'How to set up NFS on Ubuntu server.',
+                url: 'nfs.html'
+            }
+        ];
+        const searchInput = document.getElementById('searchInput');
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const val = searchInput.value.trim().toLowerCase();
+            const matches = articles.filter(a => a.title.toLowerCase().includes(val));
+            if (matches.length === 1) {
+                window.location.href = matches[0].url;
+            } else if (matches.length > 1) {
+                window.location.href = 'search.html?query=' + encodeURIComponent(val);
+            } else {
+                alert('Geen artikelen gevonden.');
+            }
+        });
+        searchInput.addEventListener('input', function() {
+            const val = searchInput.value.trim().toLowerCase();
+            if (!val) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            const matches = articles.filter(a => a.title.toLowerCase().includes(val));
+        });
+        document.addEventListener('click', function(e) {
+            if (!searchResults.contains(e.target) && e.target !== searchInput) {
+                searchResults.style.display = 'none';
+            }
+        });
+        </script>
+    </body>
+</html>
