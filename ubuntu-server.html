@@ -70,9 +70,21 @@
                     title="Right-click to extract Ventoy" height="443" width="712">
                 <hr>
                 <p>
-                    In Linux, you will need to install tar and then run `tar -xvf ventoy*`.
-                    After that, you can run VentoyGUI with `./VentoyGUI.x86_64`.
+                In Linux, you will need to install tar and then run the following command:
                 </p>
+                <div class="code-block">
+                <pre><code id="extractVentoy">tar -xvf ventoy*</code></pre>
+                <button onclick="copyToClipboard('extractVentoy')" class="copy-button">📋 Copy</button>
+                </div>
+
+                <p>
+                After that, launch VentoyGUI with this command:
+                </p>
+                <div class="code-block">
+                <pre><code id="launchVentoy">./VentoyGUI.x86_64</code></pre>
+                <button onclick="copyToClipboard('launchVentoy')" class="copy-button">📋 Copy</button>
+                </div>
+
                     <img class=img  src="img/ubuntu-server/extract-linux-ventoy.png" alt="Extract Linux Ventoy"
                     title="Extract Ventoy using tar" height="443" width="712">
                 <hr>
@@ -167,7 +179,27 @@
                 <img class=img src="img/ubuntu-server/ubuntu-installer-done-reboot.png" alt="Select packages in Ubuntu installer"
                 title="Select packages in Ubuntu installer" height="443" width="712">
                 <h4>Congratulations! You have successfully installed Ubuntu Server!</h4>
-                </article>
+                <hr>
+                <h4>Let's now configure Ubuntu Server the right way</h4>
+                <p> Now that you have installed Ubuntu Server, there's a bit of configuration left to do—
+                    such as setting up updates, adjusting the system time, disabling auto-reboot after updates, and enabling automatic updates. </p>
+                <hr>
+                <h4>Manually update Ubuntu Server</h4>
+                <p>Make sure you are logged in first.</p>
+                <p>
+                Now let's update our Ubuntu Server.  
+                You can do this by running the following command:  
+                <div class="code-block">
+                <pre><code id="updateCommands">sudo apt update && sudo apt upgrade -y && sudo apt install bash-completion</code></pre>
+                <button onclick="copyToClipboard('updateCommands')" class="copy-button">📋 Copy</button>
+                </div>
+                
+                As you can see, I’ve also included the installation of bash-completion.  
+                This tool makes it easier to use tab-completion when working with commands in Linux.
+                </p>
+
+
+            </article>
         </main>
         <footer>
             <nav>
@@ -177,5 +209,17 @@
                 </ul>
             </nav>
         </footer>
+        <script>
+            function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const text = el.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Code gekopieerd naar klembord!');
+            }, () => {
+                alert('Er ging iets mis met kopiëren.');
+            });
+            }
+        </script>
+
     </body>
 </html>

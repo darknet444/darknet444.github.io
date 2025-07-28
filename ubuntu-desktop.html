@@ -144,13 +144,25 @@
                         <img src="img/ubuntu-desktop/login-screen.png" alt="Login Screen" title="Login Screen" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" width="500">
                     </i>
                 </li>
-                <li><b>Check for Updates:</b> Open the terminal by pressing <b>Ctrl+Alt+T</b> and type:<br>
-                    <code>sudo apt update && sudo apt upgrade</code><br>
-                    Press <b>Enter</b> and type your password if asked.<br>
-                    <i>
-                        <img src="img/ubuntu-desktop/terminal-update.png" alt="Terminal Update" title="Terminal Update" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" width="500">
-                    </i>
+                <li>
+                <b>Check for Updates:</b> Open the terminal by pressing <b>Ctrl+Alt+T</b> and type:
+                
+                <div class="code-block">
+                    <pre><code id="checkUpdates">sudo apt update && sudo apt upgrade</code></pre>
+                    <button onclick="copyToClipboard('checkUpdates')" class="copy-button">📋 Copy</button>
+                </div>
+
+                Press <b>Enter</b> and type your password if asked.<br>
+
+                <i>
+                    <img src="img/ubuntu-desktop/terminal-update.png" 
+                        alt="Terminal Update" 
+                        title="Terminal Update" 
+                        style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" 
+                        width="500">
+                </i>
                 </li>
+
                 <li><b>Install Software:</b> Open the <b>Ubuntu Software</b> app to find and install programs you need.<br>
                     <i>
                         <img src="img/ubuntu-desktop/ubuntu-software.png" alt="Ubuntu Software App" title="Ubuntu Software App" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" width="1000">
@@ -161,12 +173,23 @@
                         <img src="img/ubuntu-desktop/settings-app.png" alt="Settings App" title="Settings App" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" width="1000">
                     </i>
                 </li>
-                <li><b>Enable Firewall (Optional):</b> For extra security, open the terminal and type:<br>
-                    <code>sudo ufw enable</code><br>
-                    <i>
-                        <img src="img/ubuntu-desktop/ufw-terminal.png" alt="UFW in Terminal" title="UFW in Terminal" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" width="500">
-                    </i>
+               <li>
+                <b>Enable Firewall (Optional):</b> For extra security, open the terminal and type:
+
+                <div class="code-block">
+                    <pre><code id="enableFirewall">sudo ufw enable</code></pre>
+                    <button onclick="copyToClipboard('enableFirewall')" class="copy-button">📋 Copy</button>
+                </div>
+
+                <i>
+                    <img src="img/ubuntu-desktop/ufw-terminal.png" 
+                        alt="UFW in Terminal" 
+                        title="UFW in Terminal" 
+                        style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;" 
+                        width="500">
+                </i>
                 </li>
+
                 <li><b>Restart Your Computer:</b> After updates and changes, it’s a good idea to restart your computer to make sure everything works well.<br>
             </ol>
             <h3 id="summary">Summary</h3>
@@ -182,5 +205,16 @@
             </ul>
         </nav>
     </footer>
+    <script>
+            function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const text = el.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Code gekopieerd naar klembord!');
+            }, () => {
+                alert('Er ging iets mis met kopiëren.');
+            });
+            }
+    </script>
 </body>
 </html>

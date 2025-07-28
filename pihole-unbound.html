@@ -69,11 +69,22 @@
                     <a href="ubuntu-server.html">Installing & Configuring Ubuntu Server</a>. Check it out.</p>
             </article>
             <article id="Installing-&-Setting-up-Pi-hole-on-Ubuntu-server.">
-                <h4>Installing & Setting Up Pi-hole on Ubuntu Server</h4>
-                <p>To install Pi-hole, run 'curl -sSL https://install.pi-hole.net | bash'</p>
-                <img class="img" src="img/pihole-and-unbound/pihole-install-curl.png" alt="Running curl -sSL https://install.pi-hole.net | bash"
-                title="Installing Pi-hole in tty" width="755" height="470">
+            <h4>Installing & Setting Up Pi-hole on Ubuntu Server</h4>
+
+            <p>To install Pi-hole, run the following command:</p>
+            <div class="code-block">
+                <pre><code id="installPihole">curl -sSL https://install.pi-hole.net | bash</code></pre>
+                <button onclick="copyToClipboard('installPihole')" class="copy-button">📋 Copy</button>
+            </div>
+
+            <img class="img" 
+                src="img/pihole-and-unbound/pihole-install-curl.png" 
+                alt="Running curl -sSL https://install.pi-hole.net | bash"
+                title="Installing Pi-hole in tty" 
+                width="755" 
+                height="470">
             </article>
+
         </main>
         <footer>
             <nav>
@@ -83,6 +94,16 @@
                 </ul>
             </nav>
         </footer>
-
+        <script>
+            function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const text = el.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Code gekopieerd naar klembord!');
+            }, () => {
+                alert('Er ging iets mis met kopiëren.');
+            });
+            }
+        </script>
     </body>
 </html>
