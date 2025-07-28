@@ -6,6 +6,9 @@ html {
 article ol li a {
     text-decoration: underline;
 }
+a {
+  text-decoration: underline;
+}
 
 h2 {
     text-decoration: underline;
@@ -23,7 +26,8 @@ body {
 }
 a, body a {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
+
 }
 a:hover, h2:hover {
     color: #809fff;
