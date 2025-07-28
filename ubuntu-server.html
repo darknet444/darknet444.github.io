@@ -176,14 +176,17 @@
                 <p>Now that the installation process is complete, you can 
                     reboot your server and safely remove or unplug your USB drive.
                 </p>
-                <img class=img src="img/ubuntu-server/ubuntu-installer-done-reboot.png" alt="Select packages in Ubuntu installer"
-                title="Select packages in Ubuntu installer" height="443" width="712">
+                <img class=img src="img/ubuntu-server/ubuntu-installer-done-reboot.png" alt="Ubutnu installer done reboot"
+                title="Ubuntu installer is done reboot" height="443" width="712">
+                </article>
+                <article>
                 <h4>Congratulations! You have successfully installed Ubuntu Server!</h4>
                 <hr>
                 <h4>Let's now configure Ubuntu Server the right way</h4>
                 <p> Now that you have installed Ubuntu Server, there's a bit of configuration left to do—
                     such as setting up updates, adjusting the system time, disabling auto-reboot after updates, and enabling automatic updates. </p>
-                <hr>
+                </article>
+                <article>
                 <h4>Manually update Ubuntu Server</h4>
                 <p>Make sure you are logged in first.</p>
                 <p>
@@ -193,13 +196,87 @@
                 <pre><code id="updateCommands">sudo apt update && sudo apt upgrade -y && sudo apt install bash-completion</code></pre>
                 <button onclick="copyToClipboard('updateCommands')" class="copy-button">📋 Copy</button>
                 </div>
-                
+                <p>
                 As you can see, I’ve also included the installation of bash-completion.  
                 This tool makes it easier to use tab-completion when working with commands in Linux.
                 </p>
+                <img class="img" src="img/ubuntu-server/ubuntu-update.png" alt="Manually update ubuntu via apt" title="Manually update ubuntu via apt" height="443" width="712">
+                </article>
+                <article id="ubuntu-server-maintenance">
+                <h4>Final Setup: Time Settings, Automatic Updates & Reboots</h4>
+
+                <p>
+                    Your Ubuntu Server is now up to date. Let's take care of a few final settings.
+                </p>
+
+                <h5>Set the Correct Timezone</h5>
+                <p>
+                    Run the following command and follow the menu to select your region:
+                </p>
+
+                <div class="code-block">
+                    <pre><code id="setTimezone">sudo dpkg-reconfigure tzdata</code></pre>
+                    <button onclick="copyToClipboard('setTimezone')" class="copy-button">📋 Copy</button>
+                </div>
+                <img class="img" src="img/ubuntu-server/ubuntu-timezone.png" alt="Change timezone in ubuntu" title="Change timezone in ubuntu" height="443" width="712">
 
 
-            </article>
+                <h5>Enable Automatic Security Updates</h5>
+                <p>
+                    Ubuntu can automatically install security updates. Use this command:
+                </p>
+                <div class="code-block">
+                    <pre><code id="enableUnattended">sudo apt install unattended-upgrades</code></pre>
+                    <button onclick="copyToClipboard('enableUnattended')" class="copy-button">📋 Copy</button>
+                </div>
+                <img class="img" src="img/ubuntu-server/ubuntu-unattended-upgrades.png" alt="Installing unattende-upgrades via apt" title="Installing unattende-upgrades via apt" height="443" width="712">
+
+                <p>
+                    Make sure it's active:
+                </p>
+                <div class="code-block">
+                    <pre><code id="configUnattended">sudo dpkg-reconfigure --priority=low unattended-upgrades</code></pre>
+                    <button onclick="copyToClipboard('configUnattended')" class="copy-button">📋 Copy</button>
+                </div>
+                <img class="img" src="img/ubuntu-server/ubuntu-server-reconfigure-update.png" alt="Reconfigure unattended-upgrades" title="Reconfigure unattended-upgrades" height="443" width="712">
+
+                <h5>Prevent Automatic Reboots</h5>
+                <p>
+                    Ubuntu won’t restart your server automatically unless you enable that. To be sure it's off, check this file:
+                </p>
+                <div class="code-block">
+                    <pre><code id="rebootCheck">sudo nano /etc/apt/apt.conf.d/50unattended-upgrades</code></pre>
+                    <button onclick="copyToClipboard('rebootCheck')" class="copy-button">📋 Copy</button>
+                </div>
+
+                <p>
+                    Look for this line inside the file:
+                </p>
+                <div class="code-block">
+                    <pre><code id="rebootLine">Unattended-Upgrade::Automatic-Reboot "false";</code></pre>
+                    <button onclick="copyToClipboard('rebootLine')" class="copy-button">📋 Copy</button>
+                </div>
+                <img class="img" src="img/ubuntu-server/ubuntu-server-disable-autoreboot.png" alt="Disabling auto reboot after installing update" title="Disabling auto reboot after installing update" height="443" width="712">
+
+                <p>
+                    If it says <code>"true"</code>, change it to <code>"false"</code> and save.
+                    and dont forget to uncomment the line by removing the <code>//</code> at the start of the line.
+                    pres control + o to save and control + x to exit.
+                </p>
+                </article>
+                <article id="ubuntu-server-congratulations">
+                <h4>Congratulations!</h4>
+                <p>
+                    Your Ubuntu Server is now fully installed, updated, and configured with all essential settings.  
+                    From proper time synchronization to automatic updates and reboot protection — your system is ready to perform reliably.  
+                    Take a moment to celebrate your clean and secure setup. You’ve just laid the foundation for a powerful Linux server environment!
+                </p>
+                <p>
+                    Feel free to explore more advanced tools, install web servers, or optimize your firewall rules — the possibilities are endless.  
+                    And remember: great systems start with solid beginnings — like yours.
+                </p>
+                </article>
+
         </main>
         <footer>
             <nav>

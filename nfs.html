@@ -42,4 +42,15 @@
                 </ul>
             </nav>
         </footer>
+        <script>
+            function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const text = el.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Code gekopieerd naar klembord!');
+            }, () => {
+                alert('Er ging iets mis met kopiëren.');
+            });
+            }
+        </script>
     </body>
