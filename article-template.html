@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <!-- Essentieel voor goede mobiele layout en schaal -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artikel Titel</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="stylesheet" href="main.css" type="text/css">
+    <meta name="description" content="Korte omschrijving van je artikel" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    
+
 </head>
 <body>
     <header>
-        <h1>Artikel Titel</h1>
+        <h1 style="text-align:center;">Artikel Titel</h1>
         <nav>
-            <ul style="display: flex; align-items: center; gap: 1em;">
+            <ul style="display: flex; justify-content: center; align-items: center; gap: 1em; list-style: none; padding: 0; margin: 1em 0;">
                 <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact-me.html">Contact</a></li>
@@ -33,38 +40,58 @@
 
         <article>
             <a href="#"><h2 id="intro">Artikel Titel</h2></a>
-            <img src="img/voorbeeld.png" alt="Voorbeeld afbeelding" title="Voorbeeld" width="200" height="100">
-            <p>Korte uitleg over het onderwerp. Pas deze tekst aan voor jouw artikel.<br>
-            Gebruik <b>vetgedrukte</b> tekst, <abbr title="Uitleg">afkortingen</abbr> en opsommingen waar nodig.</p>
+            <img 
+                src="img/voorbeeld.png" 
+                alt="Voorbeeld afbeelding" 
+                title="Voorbeeld" 
+                style="max-width:100%; height:auto; display:block; margin:1em auto;" 
+            />
+            <p>
+                Korte uitleg over het onderwerp. Pas deze tekst aan voor jouw artikel.<br>
+                Gebruik <b>vetgedrukte</b> tekst, <abbr title="Uitleg">afkortingen</abbr> en opsommingen waar nodig.
+            </p>
+
             <h3 id="stap1">Stap 1: Voorbereiding</h3>
             <p>Beschrijf hier de voorbereiding.</p>
+
             <h3 id="stap2">Stap 2: Installatie</h3>
             <p>Beschrijf hier de installatie.</p>
+            
             <h3 id="stap3">Stap 3: Configuratie</h3>
             <p>Beschrijf hier de configuratie.</p>
+            
             <h3 id="samenvatting">Samenvatting</h3>
             <p>Korte samenvatting of afsluitende tip.</p>
+
+            <!-- Voorbeeld van een codeblok met copyknop -->
+            <div class="code-block">
+                <pre><code id="exampleCode">sudo apt update && sudo apt upgrade -y</code></pre>
+                <button onclick="copyToClipboard('exampleCode')" class="copy-button">📋 Copy</button>
+            </div>
+
             <!-- Voeg extra afbeeldingen, stappen of code toe indien gewenst -->
         </article>
     </main>
     <footer>
         <nav>
-            <ul>
+            <ul style="display:flex; justify-content: center; gap: 2em; list-style:none; padding: 0; margin: 2em 0 1em 0;">
                 <li>&copy; <a href="about.html">DarkNet444</a></li>
                 <li><a href="#top">Back to top</a></li>
             </ul>
         </nav>
     </footer>
+
     <script>
-            function copyToClipboard(elementId) {
+        function copyToClipboard(elementId) {
             const el = document.getElementById(elementId);
+            if (!el) return alert('Geen code gevonden om te kopiëren.');
             const text = el.innerText;
             navigator.clipboard.writeText(text).then(() => {
                 alert('Code gekopieerd naar klembord!');
-            }, () => {
+            }).catch(() => {
                 alert('Er ging iets mis met kopiëren.');
             });
-            }
-        </script>
+        }
+    </script>
 </body>
 </html>
