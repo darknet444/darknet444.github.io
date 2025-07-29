@@ -37,7 +37,7 @@
     </article>
 
     <article>
-        <h4>Description</h4>
+        <h3>Description</h3>
         <p>
             In this article, I'll teach you how to set up an <b><abbr title="Ubuntu Server 24.04 LTS">Ubuntu Server</abbr></b>.
             You will learn how to configure updates, set up correct system time and SSH.
@@ -46,7 +46,7 @@
     </article>
 
     <article id="grabbing-files">
-        <h4>Grabbing Files</h4>
+        <h3>Grabbing Files</h3>
         <p>
             Let's start by downloading the ISO and Ventoy, so we can boot into a live environment.<br>
             Download the <a href="https://ubuntu.com/download/server">Ubuntu Server ISO</a>.<br>
@@ -56,18 +56,18 @@
     </article>
 
     <article id="bootable-usb-ventoy">
-        <h4>Creating a Bootable USB Drive with Ventoy</h4>
+        <h3>Creating a Bootable USB Drive with Ventoy</h3>
 
-        <h5>In Windows:</h5>
+        <h4>In Windows:</h4>
         <ol>
             <li>Right-click on the Ventoy file and choose "Extract All."</li>
             <li>Run <b>Ventoy2Disk</b> as administrator.</li>
-                <img class="img" src="img/ubuntu-server/extract-windows-ventoy.png" alt="Extract Windows Ventoy"
-                     title="Right-click to extract Ventoy" height="443" width="712">
         </ol>
+        <img class="img" src="img/ubuntu-server/extract-windows-ventoy.png" alt="Extract Windows Ventoy"
+        title="Right-click to extract Ventoy" height="443" width="712">
         <hr>
 
-        <h5>In Linux:</h5>
+        <h4>In Linux:</h4>
         <ol>
             <li>Install <code>tar</code> if needed and extract Ventoy:</li>
         </ol>
@@ -102,7 +102,7 @@
     </article>
 
     <article id="run-installer">
-        <h4>Running the Installer and Installing Ubuntu</h4>
+        <h3>Running the Installer and Installing Ubuntu</h3>
         <p>
             Boot from the live ISO, start the installer, and select your preferred language, timezone, username, and password.
         </p>
@@ -176,16 +176,16 @@
     </article>
 
     <article>
-        <h4>Congratulations! You have successfully installed Ubuntu Server!</h4>
+        <h3>Congratulations! You have successfully installed Ubuntu Server!</h3>
         <hr>
-        <h4>Now, let's configure Ubuntu Server properly</h4>
+        <h3>Now, let's configure Ubuntu Server properly</h3>
         <p>
             After installing Ubuntu Server, there's some configuration left: setting up updates, adjusting time settings, disabling auto-reboot after updates, and enabling automatic updates.
         </p>
     </article>
 
     <article>
-        <h4>Manual Update for Ubuntu Server</h4>
+        <h3>Manual Update for Ubuntu Server</h3>
         <p>
             First, log in to your server.<br>
             Then update Ubuntu with the following command:
@@ -202,10 +202,10 @@
     </article>
 
     <article id="updates">
-        <h4>Final Setup: Time Settings, Automatic Updates & Reboots</h4>
+        <h3>Final Setup: Time Settings, Automatic Updates & Reboots</h3>
         <p>Your Ubuntu Server is up to date. Let's finalize some key settings.</p>
 
-        <h5 id="set-time">Set the Correct Timezone</h5>
+        <h4 id="set-time">Set the Correct Timezone</h4>
         <p>
             Run this command and select your timezone:
         </p>
@@ -216,7 +216,7 @@
         <img class="img" src="img/ubuntu-server/ubuntu-timezone.png" alt="Change timezone in Ubuntu"
              title="Change timezone in Ubuntu" height="443" width="712">
 
-        <h5>Enable Automatic Security Updates</h5>
+        <h4>Enable Automatic Security Updates</h4>
         <p>
             To enable automatic security updates, run:
         </p>
@@ -234,7 +234,7 @@
         <img class="img" src="img/ubuntu-server/ubuntu-server-reconfigure-update.png" alt="Reconfigure unattended-upgrades"
              title="Reconfigure unattended-upgrades" height="443" width="712">
 
-        <h5 id="disable-auto-reboot">Prevent Automatic Reboots</h5>
+        <h4 id="disable-auto-reboot">Prevent Automatic Reboots</h4>
         <p>
             By default, Ubuntu won't restart automatically, but to be sure, check this file:
         </p>
@@ -256,7 +256,7 @@
     </article>
 
     <article id="ubuntu-server-congratulations">
-        <h4>Congratulations!</h4>
+        <h3>Congratulations!</h3>
         <p>
             Your Ubuntu Server is now fully installed and configured, including essential updates and settings!<br>
             From proper time synchronization to secure updates and reboot protection, your system is ready for use.<br>
@@ -266,7 +266,6 @@
             Remember: great systems start with solid beginnings—like yours!
         </p>
     </article>
-
 </main>
 
 <footer>
