@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <!-- BELANGRIJK: viewport meta tag voor correcte mobiele schaal -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Essentieel voor correcte schaal op mobiel -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
     <title>Ubuntu Server installation Guide</title>
     <meta name="description" content="Ubuntu Server installation Guide" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -76,14 +76,14 @@
         <ol>
             <li>Install <code>tar</code> if needed and extract Ventoy:</li>
         </ol>
-        <div class="code-block">
-            <pre><code id="extractVentoy">tar -xvf ventoy*</code></pre>
-            <button onclick="copyToClipboard('extractVentoy')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="extractVentoy">tar -xvf ventoy*</code></pre>
+            <button onclick="copyToClipboard('extractVentoy')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>Then start the GUI with:</p>
-        <div class="code-block">
-            <pre><code id="launchVentoy">./VentoyGUI.x86_64</code></pre>
-            <button onclick="copyToClipboard('launchVentoy')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="launchVentoy">./VentoyGUI.x86_64</code></pre>
+            <button onclick="copyToClipboard('launchVentoy')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <img
             class="img"
@@ -285,9 +285,9 @@
             First, log in to your server.<br />
             Then update Ubuntu with the following command:
         </p>
-        <div class="code-block">
-            <pre><code id="updateCommands">sudo apt update && sudo apt upgrade -y && sudo apt install bash-completion</code></pre>
-            <button onclick="copyToClipboard('updateCommands')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="updateCommands">sudo apt update && sudo apt upgrade -y && sudo apt install bash-completion</code></pre>
+            <button onclick="copyToClipboard('updateCommands')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>The <code>bash-completion</code> tool adds handy tab-completion in the shell.</p>
         <img
@@ -306,9 +306,9 @@
 
         <h4 id="set-time">Set the Correct Timezone</h4>
         <p>Run this command and select your timezone:</p>
-        <div class="code-block">
-            <pre><code id="setTimezone">sudo dpkg-reconfigure tzdata</code></pre>
-            <button onclick="copyToClipboard('setTimezone')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="setTimezone">sudo dpkg-reconfigure tzdata</code></pre>
+            <button onclick="copyToClipboard('setTimezone')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <img
             class="img"
@@ -321,9 +321,9 @@
 
         <h4>Enable Automatic Security Updates</h4>
         <p>To enable automatic security updates, run:</p>
-        <div class="code-block">
-            <pre><code id="enableUnattended">sudo apt install unattended-upgrades</code></pre>
-            <button onclick="copyToClipboard('enableUnattended')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="enableUnattended">sudo apt install unattended-upgrades</code></pre>
+            <button onclick="copyToClipboard('enableUnattended')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <img
             class="img"
@@ -334,9 +334,9 @@
             loading="lazy"
         />
         <p>Then make sure it is enabled:</p>
-        <div class="code-block">
-            <pre><code id="configUnattended">sudo dpkg-reconfigure --priority=low unattended-upgrades</code></pre>
-            <button onclick="copyToClipboard('configUnattended')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="configUnattended">sudo dpkg-reconfigure --priority=low unattended-upgrades</code></pre>
+            <button onclick="copyToClipboard('configUnattended')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <img
             class="img"
@@ -349,14 +349,14 @@
 
         <h4 id="disable-auto-reboot">Prevent Automatic Reboots</h4>
         <p>By default, Ubuntu won't restart automatically, but to be sure, check this file:</p>
-        <div class="code-block">
-            <pre><code id="rebootCheck">sudo nano /etc/apt/apt.conf.d/50unattended-upgrades</code></pre>
-            <button onclick="copyToClipboard('rebootCheck')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="rebootCheck">sudo nano /etc/apt/apt.conf.d/50unattended-upgrades</code></pre>
+            <button onclick="copyToClipboard('rebootCheck')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>Inside the file, ensure you see:</p>
-        <div class="code-block">
-            <pre><code id="rebootLine">Unattended-Upgrade::Automatic-Reboot "false";</code></pre>
-            <button onclick="copyToClipboard('rebootLine')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin:0; white-space: pre-wrap;"><code id="rebootLine">Unattended-Upgrade::Automatic-Reboot "false";</code></pre>
+            <button onclick="copyToClipboard('rebootLine')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <img
             class="img"
@@ -395,16 +395,17 @@
         </ul>
     </nav>
 </footer>
+
 <script>
-function copyToClipboard(elementId) {
-    const el = document.getElementById(elementId);
-    const text = el.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        alert('Code copied to clipboard!');
-    }, () => {
-        alert('Could not copy to clipboard.');
-    });
-}
+    function copyToClipboard(elementId) {
+        const el = document.getElementById(elementId);
+        const text = el.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Code copied to clipboard!');
+        }).catch(() => {
+            alert('Could not copy to clipboard.');
+        });
+    }
 </script>
 </body>
 </html>
