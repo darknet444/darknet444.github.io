@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <!-- BELANGRIJK: viewport meta tag voor correcte mobiele schaal -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ubuntu Desktop installation Guide</title>
     <meta name="description" content="Ubuntu Desktop installation Guide" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -40,8 +42,6 @@
             alt="Ubuntu Desktop Screenshot"
             title="Ubuntu Desktop Screenshot"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            width="400"
-            height="240"
         />
         <p>
             This guide will help you, step by step, to install Ubuntu Desktop on your computer. It is
@@ -55,14 +55,12 @@
         <h3>Step 1: Download Ubuntu and Create a Bootable USB Stick</h3>
         <ol>
             <li>
-                <b>Download Ubuntu:</b>
-                <br />
+                <b>Download Ubuntu:</b><br />
                 Go to the
-                <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener noreferrer"
-                    >official Ubuntu website</a
+                <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener noreferrer">
+                    official Ubuntu website</a
                 >
-                and click on the download button. Save the file (it is called an ISO) somewhere you can
-                find it.
+                and click on the download button. Save the file (called an ISO) somewhere you can find it.
                 <br />
                 <img
                     src="img/ubuntu-desktop/ubuntu-download.png"
@@ -73,8 +71,7 @@
                 />
             </li>
             <li>
-                <b>Prepare a USB Stick:</b>
-                <br />
+                <b>Prepare a USB Stick:</b><br />
                 Find a USB stick with at least 8GB of space. If there is any data on your USB stick, make a
                 backup first.
                 <b>Make sure there is nothing important on it, because it will be erased!</b>
@@ -84,7 +81,6 @@
                     alt="USB Stick"
                     title="USB Stick"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="256"
                     loading="lazy"
                 />
             </li>
@@ -113,25 +109,25 @@
                         justify-content: center;
                         align-items: flex-start;
                         margin: 1em 0;
+                        flex-wrap: wrap; /* zorgt dat bij te weinig ruimte ze onder elkaar komen */
                     "
                 >
                     <img
                         src="img/ubuntu-desktop/rufus.png"
                         alt="Rufus Settings"
                         title="Rufus Settings"
-                        style="max-width:100%; border:1px solid #ccc;"
-                        width="300"
+                        style="max-width: 45%; border:1px solid #ccc; display:block; height: auto;"
                         loading="lazy"
                     />
                     <img
                         src="img/ubuntu-desktop/balenaetcher.png"
                         alt="balenaEtcher"
                         title="balenaEtcher"
-                        style="max-width:100%; border:1px solid #ccc;"
-                        width="400"
+                        style="max-width: 45%; border:1px solid #ccc; display:block; height: auto;"
                         loading="lazy"
                     />
                 </div>
+
                 Wait until the process is finished. Then safely remove the USB stick from your computer.
             </li>
         </ol>
@@ -149,7 +145,6 @@
                     alt="USB Stick in Computer"
                     title="USB Stick in Computer"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="600"
                     loading="lazy"
                 />
             </li>
@@ -157,9 +152,8 @@
                 <b>Restart the Computer:</b> Turn on (or restart) the computer. You need to make the computer
                 boot from the USB stick instead of the hard drive.
                 <br />
-                <b>Important:</b> The key to open the boot menu is different for every computer brand and
-                model. Common keys are <b>F12</b>, <b>ESC</b>, <b>F2</b>, <b>F9</b>, or <b>DEL</b>. When
-                your computer starts, look for a message like "Press F12 for Boot Menu" or "Boot Options".
+                <b>Important:</b> The key to open the boot menu differs per brand/model. Common keys are <b>F12</b>, <b>ESC</b>,
+                <b>F2</b>, <b>F9</b>, or <b>DEL</b>. When your computer starts, look for a message like "Press F12 for Boot Menu" or "Boot Options".
                 <br />
                 <ul>
                     <li>For example: <b>HP ProBook G8</b>: <b>F9</b></li>
@@ -168,40 +162,36 @@
                     <li><b>Acer</b>: <b>F12</b></li>
                     <li><b>Asus</b>: <b>ESC</b></li>
                 </ul>
-                If you are not sure, search online for your computer model and "boot menu key".
+                Search online for your computer model and "boot menu key" if unsure.
                 <br />
                 <img
                     src="img/ubuntu-desktop/boot-menu-selection.png"
                     alt="Boot Menu Key Example"
                     title="Boot Menu Key Example"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="600"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Open the Boot Menu:</b> When the computer starts, press the key for the boot menu (often
-                <b>F12</b>, <b>ESC</b>, <b>F2</b>, or <b>DEL</b>). Choose the USB stick from the list.
+                <b>Open the Boot Menu:</b> Press the key for the boot menu (often <b>F12</b>, <b>ESC</b>, <b>F2</b>, or <b>DEL</b>)
+                when the computer starts. Choose the USB stick from the list.
                 <br />
                 <img
                     src="img/ubuntu-desktop/boot-menu-selection.png"
                     alt="Boot Menu Selection"
                     title="Boot Menu Selection"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="300"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Start Ubuntu:</b> You will see a menu. Select <b>Try or Install Ubuntu</b> and press
-                <b>Enter</b>.
+                <b>Start Ubuntu:</b> Select <b>Try or Install Ubuntu</b> from the menu and press <b>Enter</b>.
                 <br />
                 <img
                     src="img/ubuntu-desktop/ubuntu-boot-menu.png"
                     alt="Ubuntu Boot Menu"
                     title="Ubuntu Boot Menu"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="1000"
                     loading="lazy"
                 />
             </li>
@@ -219,7 +209,6 @@
                     alt="Language Selection"
                     title="Language Selection"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
@@ -231,7 +220,6 @@
                     alt="Keyboard Layout"
                     title="Keyboard Layout"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
@@ -244,71 +232,64 @@
                     alt="Installation Type"
                     title="Installation Type"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Installation Type:</b> If you want to erase the whole disk, choose <b>Erase disk and
-                install Ubuntu</b>. If you want to keep other systems, choose <b>Something else</b>.
+                <b>Installation Type:</b> Choose <b>Erase disk and install Ubuntu</b> to erase everything; or
+                <b>Something else</b> to do custom partitioning.
                 <br />
                 <img
                     src="img/ubuntu-desktop/disk-selection.png"
                     alt="Disk Selection"
                     title="Disk Selection"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Set Your Location:</b> Click on the map or type your city, then click <b>Continue</b>.
+                <b>Set Your Location:</b> Click on the map or enter your city and click <b>Continue</b>.
                 <br />
                 <img
                     src="img/ubuntu-desktop/timezone-selection.png"
                     alt="Timezone Selection"
                     title="Timezone Selection"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Create Your User:</b> Enter your name, computer name, username, and password. Write down your
-                password so you don’t forget!
+                <b>Create Your User:</b> Enter your name, computer name, username, and password. Write down
+                your password!
                 <br />
                 <img
                     src="img/ubuntu-desktop/user-setup.png"
                     alt="User Setup"
                     title="User Setup"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Wait for Installation:</b> Ubuntu will now install. This can take 10-20 minutes. When it is
-                done, click <b>Restart Now</b>.
+                <b>Wait for Installation:</b> The install will take 10-20 minutes. When finished, click
+                <b>Restart Now</b>.
                 <br />
                 <img
                     src="img/ubuntu-desktop/installation-progress.png"
                     alt="Installation Progress"
                     title="Installation Progress"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Remove the USB Stick:</b> When the computer restarts, remove the USB stick when you see
-                the message.
+                <b>Remove the USB Stick:</b> When rebooting, remove the USB stick when prompted.
                 <br />
                 <img
                     src="img/ubuntu-desktop/usb-in-computer.png"
                     alt="Remove USB Stick"
                     title="Remove USB Stick"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="600"
                     loading="lazy"
                 />
             </li>
@@ -326,55 +307,49 @@
                     alt="Login Screen"
                     title="Login Screen"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Check for Updates:</b> Open the terminal by pressing <b>Ctrl+Alt+T</b> and type:
+                <b>Check for Updates:</b> Open terminal (Ctrl+Alt+T) and run:
                 <div class="code-block">
                     <pre><code id="checkUpdates">sudo apt update && sudo apt upgrade</code></pre>
                     <button onclick="copyToClipboard('checkUpdates')" class="copy-button">📋 Copy</button>
                 </div>
-                Press <b>Enter</b> and type your password if asked.
+                Press Enter and enter password if required.
                 <br />
                 <img
                     src="img/ubuntu-desktop/terminal-update.png"
                     alt="Terminal Update"
                     title="Terminal Update"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Install Software:</b> Open the <b>Ubuntu Software</b> app to find and install programs you
-                need.
+                <b>Install Software:</b> Use the <b>Ubuntu Software</b> app to find and install programs.
                 <br />
                 <img
                     src="img/ubuntu-desktop/ubuntu-software.png"
                     alt="Ubuntu Software App"
                     title="Ubuntu Software App"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="1000"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Change Settings:</b> Click on the system menu (top right) and open <b>Settings</b>. Here
-                you can change your wallpaper, set up Wi-Fi, and more.
+                <b>Change Settings:</b> Go to system menu (top right) → <b>Settings</b> to customize.
                 <br />
                 <img
                     src="img/ubuntu-desktop/settings-app.png"
                     alt="Settings App"
                     title="Settings App"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="1000"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Enable Firewall (Optional):</b> For extra security, open the terminal and type:
+                <b>Enable Firewall (Optional):</b> In terminal run:
                 <div class="code-block">
                     <pre><code id="enableFirewall">sudo ufw enable</code></pre>
                     <button onclick="copyToClipboard('enableFirewall')" class="copy-button">📋 Copy</button>
@@ -384,13 +359,11 @@
                     alt="UFW in Terminal"
                     title="UFW in Terminal"
                     style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-                    width="500"
                     loading="lazy"
                 />
             </li>
             <li>
-                <b>Restart Your Computer:</b> After updates and changes, it’s a good idea to restart your
-                computer to make sure everything works well.
+                <b>Restart Your Computer:</b> Restart after updates to apply changes.
             </li>
         </ol>
     </article>
@@ -398,11 +371,9 @@
     <article id="summary">
         <h3>Summary</h3>
         <p>
-            Congratulations! You have installed Ubuntu Desktop. Take your time to explore the system. If
-            you get stuck, search online or ask for help in the Ubuntu community. Don’t forget to add your
-            own photos to each step to make this guide even clearer for others!
+            Congratulations! You have installed Ubuntu Desktop. Explore the system, seek help online if
+            needed, and add your own images to the steps to improve this guide.
         </p>
-        <!-- Add extra images, steps, or code as needed -->
     </article>
 </main>
 <footer>
@@ -413,6 +384,7 @@
         </ul>
     </nav>
 </footer>
+
 <script>
     function copyToClipboard(elementId) {
         const el = document.getElementById(elementId);
