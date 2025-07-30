@@ -40,6 +40,7 @@
             <li><a href="#performance-analysis">Performance Bottleneck Analysis</a></li>
             <li><a href="#boot-repair">Boot Repair & Partition Commands</a></li>
             <li><a href="#event-viewer">Windows Event Viewer</a></li>
+            <li><a href="#wifi-password-cmd">Wifi password cmd</a></li>
             <li><a href="#summary">Summary</a></li>
         </ol>
     </article>
@@ -534,6 +535,32 @@
         <img src="Img/windows-troubelshoot/event-viewer-critical.png" alt="Event Viewer Filtered Critical" title="Event Viewer" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
         <p><strong>Note:</strong> Most warnings are usually safe to ignore for troubleshooting.</p>
     </article>
+    <article id="wifi-password-cmd">
+        <h3>Wifi-wachtwoord tonen via Command Prompt (cmd)</h3>
+        <p class="tip"><strong>Tip:</strong> Je kunt eenvoudig opgeslagen wifi-wachtwoorden ophalen via een paar simpele commando’s.</p>
+
+        <ol>
+            <li>Open <strong>Opdrachtprompt</strong> (zoek op “cmd” in Startmenu &amp; klik met rechtermuisknop: 'Als administrator uitvoeren').</li>
+            <li>Bekijk alle opgeslagen wifi-profielen:<br>
+                <div class="code-block">
+                    <pre><code id="netshListProfiles">netsh wlan show profiles</code></pre>
+                    <button onclick="copyToClipboard('netshListProfiles')" class="copy-button">📋 Copy</button>
+                </div>
+            </li>
+            <li>Voor het gewenste netwerk (vervang <em>NAAM_WIFI</em> door jouw netwerknaam), voer uit:<br>
+                <div class="code-block">
+                    <pre><code id="netshShowKey">netsh wlan show profile name="NAAM_WIFI" key=clear</code></pre>
+                    <button onclick="copyToClipboard('netshShowKey')" class="copy-button">📋 Copy</button>
+                </div>
+            </li>
+            <li>Scroll in de output naar onder tot je <strong>“Key Content”</strong> of <strong>“Sleutelinhoud”</strong> ziet. Hier staat het wachtwoord in leesbare tekst.</li>
+        </ol>
+
+        <img src="Img/windows-troubelshoot/wifi-password-netsh-example.png" alt="Wifi wachtwoord tonen netsh" title="Wifi wachtwoord tonen netsh" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
+
+        <p><strong>Let op:</strong> Je moet administratorrechten hebben en alleen netwerken tonen die ooit op de pc verbonden waren.</p>
+    </article>
+
 
     <article id="summary">
         <h3>Summary</h3>

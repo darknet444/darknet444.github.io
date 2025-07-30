@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <!-- Essentieel voor correcte schaal op mobiel -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubuntu Server installation Guide</title>
-    <meta name="description" content="Ubuntu Server installation Guide" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="stylesheet" href="main.css" type="text/css" />
+    <meta name="description" content="Ubuntu Server installation Guide">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="stylesheet" href="main.css" type="text/css">
 </head>
 <body>
 <header>
@@ -47,16 +47,15 @@
     <article id="grabbing-files">
         <h3>Grabbing Files</h3>
         <p>
-            Let's start by downloading the ISO and Ventoy, so we can boot into a live environment.<br />
-            Download the <a href="https://ubuntu.com/download/server">Ubuntu Server ISO</a>.<br />
-            Download <a href="https://www.ventoy.net/en/download.html">Ventoy</a> to create a bootable USB drive.<br />
+            Let's start by downloading the ISO and Ventoy, so we can boot into a live environment.<br>
+            Download the <a href="https://ubuntu.com/download/server">Ubuntu Server ISO</a>.<br>
+            Download <a href="https://www.ventoy.net/en/download.html">Ventoy</a> to create a bootable USB drive.<br>
             Save both files in your Downloads folder.
         </p>
     </article>
 
     <article id="bootable-usb-ventoy">
         <h3>Creating a Bootable USB Drive with Ventoy</h3>
-
         <h4>In Windows:</h4>
         <ol>
             <li>Right-click on the Ventoy file and choose "Extract All."</li>
@@ -68,10 +67,8 @@
             alt="Extract Windows Ventoy"
             title="Right-click to extract Ventoy"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
-
+            loading="lazy">
+        <hr>
         <h4>In Linux:</h4>
         <ol>
             <li>Install <code>tar</code> if needed and extract Ventoy:</li>
@@ -91,9 +88,8 @@
             alt="Extract Linux Ventoy"
             title="Extract Ventoy using tar"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>
             Once Ventoy is running, select your USB drive and click "Install".
             <span style="color:red;">Warning: This will erase all data on the USB drive!</span>
@@ -105,10 +101,8 @@
             alt="Ventoy GUI"
             title="Ventoy GUI"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
-
+            loading="lazy">
+        <hr>
         <p>
             After installing Ventoy on the USB drive, copy the Ubuntu ISO to the USB.
             Then reboot your PC and use the correct <kbd>F</kbd> key to open the boot menu. Since this key differs per motherboard, check your PC's manual or the manufacturer's website.
@@ -119,16 +113,14 @@
             alt="Copy Ubuntu ISO to Ventoy on Linux"
             title="Copy Ubuntu ISO to Ventoy on Linux"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
         <img
             class="img"
             src="img/ubuntu-server/ubuntu-iso-to-ventoy-windows.png"
             alt="Copy Ubuntu ISO to Ventoy on Windows"
             title="Copy Ubuntu ISO to Ventoy on Windows"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
     </article>
 
     <article id="run-installer">
@@ -143,18 +135,16 @@
             alt="Select language in Ubuntu installer"
             title="Select language in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <img
             class="img"
             src="img/ubuntu-server/ubuntu-installer-keyboard-layout.png"
             alt="Select keyboard layout in Ubuntu installer"
             title="Select keyboard layout in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>
             I recommend selecting the "Minimal Install" option and installing third-party drivers.
         </p>
@@ -164,9 +154,8 @@
             alt="Select download options in Ubuntu installer"
             title="Select download options in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>
             It's wise to set a static IP address for your server; this makes accessing your services later a
             lot easier.
@@ -177,9 +166,8 @@
             alt="Change IPv4 address in Ubuntu installer"
             title="Change IPv4 address in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>Adjust the IP address to match your local subnet. For example:</p>
         <img
             class="img"
@@ -187,9 +175,8 @@
             alt="Change IPv4 to static in Ubuntu installer"
             title="Change IPv4 to static in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>Apply your changes and proceed with the installer.</p>
         <img
             class="img"
@@ -197,9 +184,8 @@
             alt="Update mirrors in Ubuntu installer"
             title="Update mirrors in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>Beginners: use the default partition settings. Advanced users may want to use RAID or ZFS.</p>
         <img
             class="img"
@@ -207,9 +193,8 @@
             alt="Select partition layout in Ubuntu installer"
             title="Select partition layout in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>When you're happy with the layout, press "Done" to continue.</p>
         <img
             class="img"
@@ -217,9 +202,8 @@
             alt="Check partition layout in Ubuntu installer"
             title="Check partition layout in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>Set your username and password.</p>
         <img
             class="img"
@@ -227,9 +211,8 @@
             alt="Select username, hostname, password in Ubuntu installer"
             title="Select username, hostname, password in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>Proceed with the installation.</p>
         <img
             class="img"
@@ -237,9 +220,8 @@
             alt="Proceed with the installer"
             title="Select username, hostname, password in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>I strongly recommend installing SSH; it makes remote server management much easier.</p>
         <img
             class="img"
@@ -247,17 +229,15 @@
             alt="Install SSH during Ubuntu installer"
             title="Install SSH during Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
         <img
             class="img"
             src="img/ubuntu-server/ubuntu-installer-select-package.png"
             alt="Select packages in Ubuntu installer"
             title="Select packages in Ubuntu installer"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
-        <hr />
+            loading="lazy">
+        <hr>
         <p>When the installation is finished, reboot your server and remove the USB drive.</p>
         <img
             class="img"
@@ -265,13 +245,12 @@
             alt="Ubuntu installer done; reboot"
             title="Ubuntu installer: done; reboot"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
     </article>
 
     <article>
         <h3>Congratulations! You have successfully installed Ubuntu Server!</h3>
-        <hr />
+        <hr>
         <h3>Now, let's configure Ubuntu Server properly</h3>
         <p>
             After installing Ubuntu Server, there's some configuration left: setting up updates, adjusting
@@ -282,7 +261,7 @@
     <article>
         <h3>Manual Update for Ubuntu Server</h3>
         <p>
-            First, log in to your server.<br />
+            First, log in to your server.<br>
             Then update Ubuntu with the following command:
         </p>
         <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
@@ -296,8 +275,7 @@
             alt="Manually update Ubuntu via apt"
             title="Manually update Ubuntu via apt"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
     </article>
 
     <article id="updates">
@@ -316,8 +294,7 @@
             alt="Change timezone in Ubuntu"
             title="Change timezone in Ubuntu"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
 
         <h4>Enable Automatic Security Updates</h4>
         <p>To enable automatic security updates, run:</p>
@@ -331,8 +308,7 @@
             alt="Installing unattended-upgrades via apt"
             title="Installing unattended-upgrades via apt"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
         <p>Then make sure it is enabled:</p>
         <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
             <pre style="margin:0; white-space: pre-wrap;"><code id="configUnattended">sudo dpkg-reconfigure --priority=low unattended-upgrades</code></pre>
@@ -344,8 +320,7 @@
             alt="Reconfigure unattended-upgrades"
             title="Reconfigure unattended-upgrades"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
 
         <h4 id="disable-auto-reboot">Prevent Automatic Reboots</h4>
         <p>By default, Ubuntu won't restart automatically, but to be sure, check this file:</p>
@@ -364,11 +339,10 @@
             alt="Disable auto reboot after installing update"
             title="Disable auto reboot after installing update"
             style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
-            loading="lazy"
-        />
+            loading="lazy">
         <p>
             If it says <code>"true"</code>, change it to <code>"false"</code> and <b>uncomment</b> the line
-            (remove <code>//</code> at the start).<br />
+            (remove <code>//</code> at the start).<br>
             Press <kbd>Ctrl + O</kbd> to save, then <kbd>Ctrl + X</kbd> to exit.
         </p>
     </article>
@@ -376,13 +350,13 @@
     <article id="ubuntu-server-congratulations">
         <h3>Congratulations!</h3>
         <p>
-            Your Ubuntu Server is now fully installed and configured, including essential updates and settings!<br />
+            Your Ubuntu Server is now fully installed and configured, including essential updates and settings!<br>
             From proper time synchronization to secure updates and reboot protection, your system is ready for
-            use.<br />
+            use.<br>
         </p>
         <p>
             Ready to go further? Try advanced tools, set up web servers, or optimize your firewall. The
-            possibilities are endless.<br />
+            possibilities are endless.<br>
             Remember: great systems start with solid beginnings—like yours!
         </p>
     </article>
@@ -395,7 +369,6 @@
         </ul>
     </nav>
 </footer>
-
 <script>
     function copyToClipboard(elementId) {
         const el = document.getElementById(elementId);
