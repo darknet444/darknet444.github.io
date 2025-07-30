@@ -107,17 +107,17 @@
                     <td>Boot Configuration Data missing or corrupt.</td>
                     <td>
                         Boot from USB/DVD → Repair your computer → Command Prompt:<br>
-                        <div class="code-block">
-                            <pre><code id="bootrec1">bootrec /rebuildbcd</code></pre>
-                            <button onclick="copyToClipboard('bootrec1')" class="copy-button">📋 Copy</button>
+                        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+                            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootrec1">bootrec /rebuildbcd</code></pre>
+                            <button onclick="copyToClipboard('bootrec1')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
                         </div>
-                        <div class="code-block">
-                            <pre><code id="bootrec2">bootrec /fixmbr</code></pre>
-                            <button onclick="copyToClipboard('bootrec2')" class="copy-button">📋 Copy</button>
+                        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+                            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootrec2">bootrec /fixmbr</code></pre>
+                            <button onclick="copyToClipboard('bootrec2')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
                         </div>
-                        <div class="code-block">
-                            <pre><code id="bootrec3">bootrec /fixboot</code></pre>
-                            <button onclick="copyToClipboard('bootrec3')" class="copy-button">📋 Copy</button>
+                        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+                            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootrec3">bootrec /fixboot</code></pre>
+                            <button onclick="copyToClipboard('bootrec3')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
                         </div>
                     </td>
                 </tr>
@@ -162,34 +162,36 @@
         <img src="Img/windows-troubelshoot/safe-mode-options.png" alt="Safe Mode Startup Options" title="Safe Mode Startup Options" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
 
         <h4>Useful Troubleshooting Commands</h4>
-        <div class="code-block">
-            <pre><code id="cmd1">bcdedit /enum all</code></pre>
-            <button onclick="copyToClipboard('cmd1')" class="copy-button">📋 Copy</button>
+        
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd1">bcdedit /enum all</code></pre>
+            <button onclick="copyToClipboard('cmd1')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd2">sfc /scannow</code></pre>
-            <button onclick="copyToClipboard('cmd2')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd2">sfc /scannow</code></pre>
+            <button onclick="copyToClipboard('cmd2')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd3">chkdsk C: /f /r</code></pre>
-            <button onclick="copyToClipboard('cmd3')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd3">chkdsk C: /f /r</code></pre>
+            <button onclick="copyToClipboard('cmd3')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd4">bootrec /fixmbr</code></pre>
-            <button onclick="copyToClipboard('cmd4')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd4">bootrec /fixmbr</code></pre>
+            <button onclick="copyToClipboard('cmd4')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd5">bootrec /fixboot</code></pre>
-            <button onclick="copyToClipboard('cmd5')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd5">bootrec /fixboot</code></pre>
+            <button onclick="copyToClipboard('cmd5')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd6">bootrec /scanos</code></pre>
-            <button onclick="copyToClipboard('cmd6')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd6">bootrec /scanos</code></pre>
+            <button onclick="copyToClipboard('cmd6')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="cmd7">bootrec /rebuildbcd</code></pre>
-            <button onclick="copyToClipboard('cmd7')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cmd7">bootrec /rebuildbcd</code></pre>
+            <button onclick="copyToClipboard('cmd7')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
         <p><strong>Tip:</strong> Use Safe Mode for malware scans or to remove problematic drivers/software.</p>
     </article>
 
@@ -227,10 +229,11 @@
         <h3>Battery Diagnostics</h3>
         <h4>Windows Built-in Battery Report</h4>
         <p>Generate a detailed battery report via command:</p>
-        <div class="code-block">
-            <pre><code id="batteryReport">powercfg /batteryreport /output %USERPROFILE%\battery-report.html /duration 7</code></pre>
-            <button onclick="copyToClipboard('batteryReport')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="batteryReport">powercfg /batteryreport /output %USERPROFILE%\battery-report.html /duration 7</code></pre>
+            <button onclick="copyToClipboard('batteryReport')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
         <p>Open <code>battery-report.html</code> in your browser. Check “Design Capacity” vs “Full Charge Capacity”, cycle count, and history.</p>
         <img src="Img/windows-troubelshoot/battery-report.png" alt="Windows Battery Report Example" title="Battery Report" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
 
@@ -256,13 +259,13 @@
         <h3>System Maintenance & Repair</h3>
         <h4>DISM and SFC Commands</h4>
         <p>Run in Admin Command Prompt (right-click Start → Windows Terminal (Admin)):</p>
-        <div class="code-block">
-            <pre><code id="dismCommand">DISM /Online /Cleanup-Image /RestoreHealth</code></pre>
-            <button onclick="copyToClipboard('dismCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dismCommand">DISM /Online /Cleanup-Image /RestoreHealth</code></pre>
+            <button onclick="copyToClipboard('dismCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="sfcCommand">sfc /scannow</code></pre>
-            <button onclick="copyToClipboard('sfcCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="sfcCommand">sfc /scannow</code></pre>
+            <button onclick="copyToClipboard('sfcCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p><strong>Tip:</strong> If SFC fails, run DISM first, then SFC again.</p>
         <img src="Img/windows-troubelshoot/terminal-dism-sfc.png" alt="Terminal with DISM and SFC" title="DISM & SFC Commands" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
@@ -272,10 +275,11 @@
 
         <h4>Disk Check (chkdsk)</h4>
         <p>Check/repair disk errors (requires restart):</p>
-        <div class="code-block">
-            <pre><code id="chkdskCommand">chkdsk C: /f /r</code></pre>
-            <button onclick="copyToClipboard('chkdskCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="chkdskCommand">chkdsk C: /f /r</code></pre>
+            <button onclick="copyToClipboard('chkdskCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
         <p><strong>Backup data before using chkdsk!</strong></p>
     </article>
 
@@ -309,9 +313,9 @@
 
         <h4>Windows "Debloat" with Chris Titus Tech Utility</h4>
         <p>Run with caution; create restore point first! PowerShell (Admin):</p>
-        <div class="code-block">
-            <pre><code id="cttDebloat">irm christitus.com/win | iex</code></pre>
-            <button onclick="copyToClipboard('cttDebloat')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="cttDebloat">irm christitus.com/win | iex</code></pre>
+            <button onclick="copyToClipboard('cttDebloat')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>See <a href="https://christitus.com/windows-tool/" target="_blank" rel="noopener noreferrer">christitus.com/windows-tool</a> for full guide.</p>
     </article>
@@ -355,18 +359,18 @@
 
         <h4>Using ipconfig to Check Your IP Address</h4>
         <p>Open Command Prompt (Windows + R → type <code>cmd</code> → Enter) and run:</p>
-        <div class="code-block">
-            <pre><code id="ipconfigCommand">ipconfig</code></pre>
-            <button onclick="copyToClipboard('ipconfigCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="ipconfigCommand">ipconfig</code></pre>
+            <button onclick="copyToClipboard('ipconfigCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>Look for the IPv4 Address under your network adapter. If it begins with <code>169.254</code>, you have an APIPA address, meaning no DHCP IP assignment.</p>
         <p>Troubleshoot by checking connections, DHCP server availability, or static IP settings.</p>
 
         <h4>Using nslookup</h4>
         <p><code>nslookup</code> helps verify which DNS servers you are using and resolve domain names.</p>
-        <div class="code-block">
-            <pre><code id="nslookupExample">nslookup www.google.com</code></pre>
-            <button onclick="copyToClipboard('nslookupExample')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="nslookupExample">nslookup www.google.com</code></pre>
+            <button onclick="copyToClipboard('nslookupExample')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
         <p>The result shows the IP address and the DNS server used for the lookup.</p>
 
@@ -384,23 +388,24 @@
         <h4>Basic Network Tools</h4>
         <h5>Ping</h5>
         <p>Tests reachability of a website or device:</p>
-        <div class="code-block">
-            <pre><code id="pingCommand">ping google.com</code></pre>
-            <button onclick="copyToClipboard('pingCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="pingCommand">ping google.com</code></pre>
+            <button onclick="copyToClipboard('pingCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
 
         <h5>Tracert (Trace Route)</h5>
         <p>Displays the path network packets take to a destination:</p>
-        <div class="code-block">
-            <pre><code id="tracertCommand">tracert google.com</code></pre>
-            <button onclick="copyToClipboard('tracertCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="tracertCommand">tracert google.com</code></pre>
+            <button onclick="copyToClipboard('tracertCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
 
         <h5>Netstat</h5>
         <p>Shows active network connections and open ports:</p>
-        <div class="code-block">
-            <pre><code id="netstatCommand">netstat -an</code></pre>
-            <button onclick="copyToClipboard('netstatCommand')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="netstatCommand">netstat -an</code></pre>
+            <button onclick="copyToClipboard('netstatCommand')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
 
         <h4>Windows Network Troubleshooter</h4>
@@ -461,33 +466,33 @@
     <article id="boot-repair">
         <h3>Boot Repair & Partition Commands</h3>
         <h4>Diskpart Commands (inspect disks & partitions):</h4>
-        <div class="code-block">
-            <pre><code id="dpCmd1">diskpart</code></pre>
-            <button onclick="copyToClipboard('dpCmd1')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd1">diskpart</code></pre>
+            <button onclick="copyToClipboard('dpCmd1')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd2">list disk</code></pre>
-            <button onclick="copyToClipboard('dpCmd2')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd2">list disk</code></pre>
+            <button onclick="copyToClipboard('dpCmd2')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd3">select disk 0</code></pre>
-            <button onclick="copyToClipboard('dpCmd3')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd3">select disk 0</code></pre>
+            <button onclick="copyToClipboard('dpCmd3')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd4">list partition</code></pre>
-            <button onclick="copyToClipboard('dpCmd4')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd4">list partition</code></pre>
+            <button onclick="copyToClipboard('dpCmd4')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd5">select partition 1</code></pre>
-            <button onclick="copyToClipboard('dpCmd5')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd5">select partition 1</code></pre>
+            <button onclick="copyToClipboard('dpCmd5')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd6">detail partition</code></pre>
-            <button onclick="copyToClipboard('dpCmd6')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd6">detail partition</code></pre>
+            <button onclick="copyToClipboard('dpCmd6')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="dpCmd7">exit</code></pre>
-            <button onclick="copyToClipboard('dpCmd7')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="dpCmd7">exit</code></pre>
+            <button onclick="copyToClipboard('dpCmd7')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
 
         <h4>Boot Repair Commands:</h4>
@@ -496,29 +501,31 @@
             <li>Choose <strong>Repair your computer &rarr; Troubleshoot &rarr; Command Prompt</strong>.</li>
             <li>Enter commands below by clicking copy:</li>
         </ol>
-        <div class="code-block">
-            <pre><code id="bootCmd1">bootrec /fixmbr</code></pre>
-            <button onclick="copyToClipboard('bootCmd1')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootCmd1">bootrec /fixmbr</code></pre>
+            <button onclick="copyToClipboard('bootCmd1')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="bootCmd2">bootrec /fixboot</code></pre>
-            <button onclick="copyToClipboard('bootCmd2')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootCmd2">bootrec /fixboot</code></pre>
+            <button onclick="copyToClipboard('bootCmd2')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="bootCmd3">bootrec /scanos</code></pre>
-            <button onclick="copyToClipboard('bootCmd3')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootCmd3">bootrec /scanos</code></pre>
+            <button onclick="copyToClipboard('bootCmd3')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
-        <div class="code-block">
-            <pre><code id="bootCmd4">bootrec /rebuildbcd</code></pre>
-            <button onclick="copyToClipboard('bootCmd4')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="bootCmd4">bootrec /rebuildbcd</code></pre>
+            <button onclick="copyToClipboard('bootCmd4')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
 
         <h4>If EFI / System Partition Is Missing/Corrupted:</h4>
         <p>After assigning a drive letter (e.g., S:) to the EFI partition, run:</p>
-        <div class="code-block">
-            <pre><code id="bcdbootCmd">bcdboot C:\Windows /s S: /f UEFI</code></pre>
-            <button onclick="copyToClipboard('bcdbootCmd')" class="copy-button">📋 Copy</button>
+        <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+            <pre style="margin: 0; white-space: pre-wrap;"><code id="bcdbootCmd">bcdboot C:\Windows /s S: /f UEFI</code></pre>
+            <button onclick="copyToClipboard('bcdbootCmd')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
         </div>
+
         <img src="Img/windows-troubelshoot/boot-commands.png" alt="Boot Repair Commands Example" title="Boot Repair Commands" style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;">
     </article>
 
@@ -542,15 +549,16 @@
         <ol>
             <li>Open <strong>Opdrachtprompt</strong> (zoek op “cmd” in Startmenu &amp; klik met rechtermuisknop: 'Als administrator uitvoeren').</li>
             <li>Bekijk alle opgeslagen wifi-profielen:<br>
-                <div class="code-block">
-                    <pre><code id="netshListProfiles">netsh wlan show profiles</code></pre>
-                    <button onclick="copyToClipboard('netshListProfiles')" class="copy-button">📋 Copy</button>
+                <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+                    <pre style="margin: 0; white-space: pre-wrap;"><code id="netshListProfiles">netsh wlan show profiles</code></pre>
+                    <button onclick="copyToClipboard('netshListProfiles')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
                 </div>
+
             </li>
             <li>Voor het gewenste netwerk (vervang <em>NAAM_WIFI</em> door jouw netwerknaam), voer uit:<br>
-                <div class="code-block">
-                    <pre><code id="netshShowKey">netsh wlan show profile name="NAAM_WIFI" key=clear</code></pre>
-                    <button onclick="copyToClipboard('netshShowKey')" class="copy-button">📋 Copy</button>
+                <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
+                    <pre style="margin: 0; white-space: pre-wrap;"><code id="netshShowKey">netsh wlan show profile name="NAAM_WIFI" key=clear</code></pre>
+                    <button onclick="copyToClipboard('netshShowKey')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
                 </div>
             </li>
             <li>Scroll in de output naar onder tot je <strong>“Key Content”</strong> of <strong>“Sleutelinhoud”</strong> ziet. Hier staat het wachtwoord in leesbare tekst.</li>
