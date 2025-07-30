@@ -38,6 +38,8 @@ code {
   border-radius: 6px;
   font-family: monospace;
   color: #809fff;
+  overflow-x: auto;
+  margin-bottom: 1em;
 }
 
 .code-block code {
@@ -52,6 +54,9 @@ code {
   user-select: all;
 }
 
+.code-block .copy-button {
+    margin-top: 0.5em;
+}
 
 /* Witte knop, zoals de rest van je site */
 .copy-button {
