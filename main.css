@@ -9,27 +9,33 @@
 
 /* ===== BASIS / RESET ===== */
 * { box-sizing: border-box; }
-html, body {
+html {
+  height: 100%;
+  overflow-y: auto; /* scroll op html */
+}
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
   min-height: 100vh;
   color: var(--text);
   font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
-body {
   background: linear-gradient(135deg, #191B20 0%, #23242a 50%, #14628a 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+
+  position: relative;
+  /* Geen flex hier, breekt sticky/fixed */
 }
-body > * { position: relative; z-index: 1; }
+
+/* body > * is relative z-index 1 */
+body > * {
+  position: relative;
+  z-index: 1;
+}
 body::before {
   content: '';
   position: fixed;
@@ -41,8 +47,10 @@ body::before {
 
 /* ===== HEADER & NAVIGATIE ===== */
 header {
-  position: sticky;
+  position: fixed; /* fixed ipv sticky om gegarandeerd plakken */
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 9999;
   background: #181818;
   border-bottom: 2px solid var(--primary);
@@ -365,11 +373,11 @@ main {
   width: 100%;
   margin: 42px auto 0 auto;
   padding: 0 22px;
-  flex: 1 0 auto;
-  border-radius: 18px;
-  background: transparent;
-  min-height: 0;
+  padding-top: 120px; /* ! Belangrijk: hoogte header + wat extra zodat inhoud niet onder header valt */
   box-sizing: border-box;
+  min-height: 0;
+  background: transparent;
+  flex: 1 0 auto;
 }
 
 /* ====== ARTIKELEN ====== */
@@ -507,17 +515,18 @@ abbr {
 @media (max-width: 700px) {
   main {
     padding: 0 4px;
+    padding-top: 120px; /* Houd ruimte voor de fixed header */
     border-radius: 0;
   }
   article {
     padding: 14px 5px;
   }
   nav {
-    /* Geen column-direction, zodat .nav-list altijd row blijft */
+    /* Geen flex-direction column, nav-items blijven naast elkaar */
     gap: 10px;
   }
   .nav-list {
-    flex-direction: row;   /* Blijft naast elkaar op mobiel */
+    flex-direction: row;
     gap: 12px;
   }
   .nav-list a {
