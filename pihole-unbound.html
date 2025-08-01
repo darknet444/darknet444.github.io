@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="DarkNet444">
     <meta name="description" content="This is a blog about how I install Pi-hole with Unbound.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pi-hole and Unbound</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link rel="stylesheet" href="main.css" type="text/css">
 </head>
 
 <body>
     <header>
-        <h1 style="text-align:center;">How I Install Pi-hole with Unbound</h1>
+        <h1>Welcome to my website!</h1>
         <nav>
-            <ul style="display: flex; justify-content: center; align-items: center; gap: 1em; list-style: none; padding: 0; margin: 1em 0;">
+            <ul class="nav-list">
                 <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact-me.html">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <article>
             <h3>Table of Contents</h3>
@@ -109,32 +112,34 @@
                 <!-- Voeg hier jouw instructies toe voor installatie en configuratie van Unbound -->
                 This section can be expanded with commands, guides, and tips on setting up Unbound.
             </p>
-            <!-- Voorbeeld van een codeblok met copy knop -->
             <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
                 <pre style="margin:0; white-space: pre-wrap;"><code id="unboundSetup">sudo apt install unbound</code></pre>
                 <button onclick="copyToClipboard('unboundSetup')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
             </div>
         </article>
     </main>
-    <footer>
-        <nav>
-            <ul style="display:flex; justify-content: center; gap: 2em; list-style: none; margin: 2em 0 1em 0; padding: 0;">
-                <li>&copy; <a href="about.html">DarkNet444</a></li>
-                <li><a href="#top">Back to top</a></li>
-            </ul>
-        </nav>
-    </footer>
-    <script>
-        function copyToClipboard(elementId) {
-            const el = document.getElementById(elementId);
-            if (!el) return alert('Geen code gevonden om te kopiëren.');
-            const text = el.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Code gekopieerd naar klembord!');
-            }).catch(() => {
-                alert('Er ging iets mis met kopiëren.');
-            });
-        }
-    </script>
+    
+<footer>
+    <nav>
+        <ul>
+            <li>&copy; <a href="about.html">DarkNet444</a></li>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
+    </nav>
+</footer>
+
+    
+<script>
+    function copyToClipboard(elementId) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        const text = el.innerText || el.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Command copied to clipboard!');
+        }).catch(() => {
+            alert('Failed to copy command.');
+        });
+    }
+</script>
 </body>
 </html>

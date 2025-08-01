@@ -9,145 +9,149 @@
     <link rel="stylesheet" href="main.css" type="text/css">
 </head>
 <body>
-    <header>
-        <h1>Search Results</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact-me.html">Contact</a></li>
-            </ul>
-            <form id="searchForm" style="display: flex; align-items: center;">
-                <input type="text" id="searchInput" placeholder="Search on title..." style="height: 1.5em;">
-                <button type="submit" style="margin-left: 0.3em;">Search</button>
-                </form>
-        </nav>
-    </header>
-    <main>
-        <div id="results"></div>
-    </main>
-    <script>
-    const articles = [
-        
-        {
-            title: 'How to install and configure Ubuntu Desktop.',
-            url: 'ubuntu-desktop.html',
-            img: 'img/ubuntu-desktop-logo.png',
-            imgAlt: 'Ubuntu Desktop logo',
-            imgTitle: 'Ubuntu Desktop',
-            imgWidth: 150,
-            imgHeight: 111,
-            description: 'In this article, I will teach you how to install and configure <b><abbr title="Ubuntu Desktop 24.04 LTS">Ubuntu Desktop</abbr></b>. You will learn how to set up your system, configure updates, and personalize your desktop environment.'
-        },
-        {
-            title: 'This is how I install and configure an Ubuntu server.',
-            url: 'ubuntu-server.html',
-            img: 'img/ubuntu-server-logo.png',
-            imgAlt: 'Ubuntu server logo',
-            imgTitle: 'Ubuntu server',
-            imgWidth: 235,
-            imgHeight: 105,
-            description: 'I will teach you how to set up an <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b>. I will show you how I configure updates, time, and SSH. This is a good starting point for your first home lab. From there, you can start building higher.'
-        },
-        {
-            title: 'How to install Pi-hole with Unbound.',
-            url: 'pihole-unbound.html',
-            img: 'img/pihole-logo.png',
-            imgAlt: 'Pi-hole logo',
-            imgTitle: 'Pi-hole DNS',
-            imgWidth: 118,
-            imgHeight: 114,
-            img2: 'img/unbound-logo.png',
-            img2Alt: 'Unbound DNS logo',
-            img2Title: 'Unbound DNS',
-            img2Width: 118,
-            img2Height: 114,
-            description: 'In these articles, I will teach you how to set up an <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b> with <b>Pi-hole</b> and <b>Unbound</b>. The benefits are that you will have an ad blocker for your whole home network and your own DNS server with DNSSEC, thanks to Unbound and Pi-hole. This will improve your privacy and speed up your local network.'
-        },
-        {
-            title: 'How to set up NFS on Ubuntu server.',
-            url: 'nfs.html',
-            img: 'img/nfs-logo.png',
-            imgAlt: 'NFS logo',
-            imgTitle: 'Network File System (NFS)',
-            imgWidth: 118,
-            imgHeight: 118,
-            img2: 'img/ubuntu-logo.png',
-            img2Alt: 'Ubuntu logo',
-            img2Title: 'Ubuntu Logo 24.04',
-            img2Width: 118,
-            img2Height: 118,
-            description: 'Here I will teach you how you can host your own file server, also known as <b><abbr title="Network File System">NFS</abbr></b>, and how you can install <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b>.'
-        }
-    ];
-    function getQuery() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('query') || '';
+<header>
+    <h1>Search Results</h1>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact-me.html">Contact</a></li>
+        </ul>
+        <form id="searchForm" class="nav-search" autocomplete="off">
+            <input type="text" id="searchInput" placeholder="Search on title...">
+            <button type="submit">Search</button>
+            <div id="searchResults"></div>
+        </form>
+    </nav>
+</header>
+<main>
+    <div id="results"></div>
+</main>
+<footer>
+    <nav>
+        <ul>
+            <li>&copy; <a href="about.html">DarkNet444</a></li>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
+    </nav>
+</footer>
+<script>
+let articles = [];
+
+// Zoekbalk werkt hetzelfde als op indexpagina en navigeert naar deze pagina
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('searchInput');
+searchForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) return;
+    window.location.href = 'search.html?query=' + encodeURIComponent(query);
+});
+
+// Optioneel: suggesties tonen (zelfde code als index)
+const searchResults = document.getElementById("searchResults");
+function renderLiveResults(matches) {
+    if (matches.length === 0) {
+        searchResults.innerHTML = '<div>Geen artikelen gevonden.</div>';
+    } else {
+        searchResults.innerHTML = matches.map(a =>
+            `<div class="result-item">${a.title}</div>`
+        ).join("");
     }
-    // Zoekbalk functionaliteit
-    const searchInput = document.getElementById('searchInput');
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const val = searchInput.value.trim().toLowerCase();
-        const matches = articles.filter(a => a.title.toLowerCase().includes(val));
-        if (matches.length === 1) {
-            window.location.href = matches[0].url;
-        } else if (matches.length > 1) {
-            window.location.href = 'search.html?query=' + encodeURIComponent(val);
-        } else {
-            alert('Geen artikelen gevonden.');
-        }
+    searchResults.style.display = "block";
+    [...searchResults.children].forEach((el, i) => {
+        el.addEventListener("click", () => {
+            window.location.href = matches[i].url;
+        });
     });
-    function showResults() {
-        const query = getQuery().toLowerCase();
-        const matches = articles.filter(a => a.title.toLowerCase().includes(query));
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '';
-        if (!query) {
-            resultsDiv.textContent = 'Geen zoekterm opgegeven.';
-            return;
+}
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim().toLowerCase();
+    if (query === "" || articles.length === 0) {
+        searchResults.style.display = "none";
+        return;
+    }
+    const matches = articles.filter(a => a.title.toLowerCase().includes(query));
+    renderLiveResults(matches);
+});
+document.addEventListener("click", e => {
+    if (!searchResults.contains(e.target) && e.target !== searchInput) {
+        searchResults.style.display = "none";
+    }
+});
+
+// Artikelen laden uit articles.json
+async function loadArticlesAndShowResults() {
+    try {
+        const res = await fetch('articles.json');
+        articles = await res.json();
+        showResults();
+    } catch(e) {
+        document.getElementById('results').textContent = 'Artikelen konden niet worden geladen.';
+    }
+}
+
+function showResults() {
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('query') || '').toLowerCase();
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+
+    if (!query) {
+        resultsDiv.textContent = 'Geen zoekterm opgegeven.';
+        return;
+    }
+    const matches = articles.filter(a => a.title.toLowerCase().includes(query));
+    if (matches.length === 0) {
+        resultsDiv.textContent = 'Geen artikelen gevonden.';
+        return;
+    }
+    matches.forEach(a => {
+        const article = document.createElement('article');
+        const link = document.createElement('a');
+        link.href = a.url;
+        link.style.display = 'block';
+        link.style.marginBottom = '1em';
+        link.style.textDecoration = 'none';
+        link.style.color = 'inherit';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = a.title;
+        h2.style.marginBottom = '0.6em';
+        link.appendChild(h2);
+
+        // Indien je in articles.json meer data hebt zoals img, voeg dat hier toe.
+        if (a.img) {
+            const img = document.createElement('img');
+            img.src = a.img;
+            img.alt = a.imgAlt || "";
+            img.title = a.imgTitle || "";
+            if (a.imgWidth) img.width = a.imgWidth;
+            if (a.imgHeight) img.height = a.imgHeight;
+            link.appendChild(img);
         }
-        if (matches.length === 0) {
-            resultsDiv.textContent = 'Geen artikelen gevonden.';
-            return;
+        if (a.img2) {
+            const img2 = document.createElement('img');
+            img2.src = a.img2;
+            img2.alt = a.img2Alt || "";
+            img2.title = a.img2Title || "";
+            if (a.img2Width) img2.width = a.img2Width;
+            if (a.img2Height) img2.height = a.img2Height;
+            link.appendChild(img2);
         }
-        matches.forEach(a => {
-            const article = document.createElement('article');
-            const aLink = document.createElement('a');
-            aLink.href = a.url;
-            const h2 = document.createElement('h2');
-            h2.textContent = a.title;
-            aLink.appendChild(h2);
-            article.appendChild(aLink);
-            // Eerste afbeelding
-            if (a.img) {
-                const img = document.createElement('img');
-                img.src = a.img;
-                img.alt = a.imgAlt;
-                img.title = a.imgTitle;
-                img.width = a.imgWidth;
-                img.height = a.imgHeight;
-                article.appendChild(img);
-            }
-            // Tweede afbeelding indien aanwezig
-            if (a.img2) {
-                const img2 = document.createElement('img');
-                img2.src = a.img2;
-                img2.alt = a.img2Alt;
-                img2.title = a.img2Title;
-                img2.width = a.img2Width;
-                img2.height = a.img2Height;
-                article.appendChild(img2);
-            }
-            // Beschrijving
+
+        article.appendChild(link);
+        if (a.description) {
             const p = document.createElement('p');
             p.innerHTML = a.description;
             article.appendChild(p);
-            article.style.marginBottom = '2em';
-            resultsDiv.appendChild(article);
-        });
-    }
-    showResults();
-    </script>
+        }
+        article.style.marginBottom = '2em';
+        resultsDiv.appendChild(article);
+    });
+}
+
+loadArticlesAndShowResults();
+</script>
 </body>
 </html>

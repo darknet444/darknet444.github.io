@@ -6,53 +6,71 @@
     <meta name="description" content="Contact page for feedback and questions.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contact Me</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
     <link rel="stylesheet" href="main.css" type="text/css">
 </head>
 <body>
-    <header>
-        <h1 style="text-align:center;">Let's Talk</h1>
-        <nav>
-            <ul style="display: flex; justify-content: center; align-items: center; gap: 1em; list-style: none; padding: 0; margin: 1em 0;">
-                <li><a href="/">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact-me.html" aria-current="page">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <article>
-            <h2>Contact Me</h2>
-            <p>It's always nice to hear feedback or questions!</p>
-            <form action="https://www.form-to-email.com/api/s/SSihbptcJA" method="POST">
-                <p>
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" required>
-                </p>
-                <p>
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com" autocomplete="email" required>
-                </p>
-                <p>
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="8" placeholder="Type your message here" required></textarea>
-                </p>
-                <p>
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
-                </p>
-            </form>
-        </article>
-    </main>
-    <footer>
-        <nav>
-            <ul style="display:flex; justify-content: center; gap: 2em; list-style: none; padding: 0; margin: 2em 0 1em 0;">
-                <li>&copy; <a href="about.html">Darknet444</a></li>
-                <li><a href="#top">Back to top</a></li>
-            </ul>
-        </nav>
-    </footer>
+<header>
+    <h1>Welcome to my website!</h1>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact-me.html" aria-current="page">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <article>
+        <h2>Contact Me</h2>
+        <p>It's always nice to hear feedback or questions!</p>
+        <form action="https://www.form-to-email.com/api/s/SSihbptcJA" method="POST">
+            <p>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" required>
+            </p>
+            <p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" autocomplete="email" required>
+            </p>
+            <p>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="8" placeholder="Type your message here" required></textarea>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </p>
+        </form>
+    </article>
+</main>
+
+<footer>
+    <nav>
+        <ul>
+            <li>&copy; <a href="about.html">DarkNet444</a></li>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
+    </nav>
+</footer>
+
+
+<script>
+    function copyToClipboard(elementId) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        const text = el.innerText || el.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Command copied to clipboard!');
+        }).catch(() => {
+            alert('Failed to copy command.');
+        });
+    }
+</script>
 </body>
 </html>

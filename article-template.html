@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <!-- Essentieel voor goede mobiele layout en schaal -->
+    <meta name="author" content="DarkNet444">
+    <meta name="description" content="Korte omschrijving van je artikel">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artikel Titel</title>
-    <meta name="description" content="Korte omschrijving van je artikel">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,15 +15,16 @@
 </head>
 <body>
     <header>
-        <h1 style="text-align:center;">Artikel Titel</h1>
+        <h1>Welcome to my website!</h1>
         <nav>
-            <ul style="display: flex; justify-content: center; align-items: center; gap: 1em; list-style: none; padding: 0; margin: 1em 0;">
+            <ul class="nav-list">
                 <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact-me.html">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <article>
             <h3>Table of Contents</h3>
@@ -34,10 +35,8 @@
                 <li><a href="#stap3">Stap 3: Configuratie</a></li>
                 <li><a href="#samenvatting">Samenvatting</a></li>
             </ol>
-        </article>
 
-        <article>
-            <h2 id="intro"><a href="#">Artikel Titel</a></h2>
+            <h2 id="intro">Artikel Titel</h2>
             <img 
                 src="img/voorbeeld.png" 
                 alt="Voorbeeld afbeelding" 
@@ -60,7 +59,7 @@
             <h3 id="samenvatting">Samenvatting</h3>
             <p>Korte samenvatting of afsluitende tip.</p>
 
-            <!-- Voorbeeld van een codeblok met copyknop -->
+            <!-- Voorbeeld van codeblok met copyknop -->
             <div class="code-block">
                 <pre><code id="exampleCode">sudo apt update && sudo apt upgrade -y</code></pre>
                 <button onclick="copyToClipboard('exampleCode')" class="copy-button">📋 Copy</button>
@@ -69,26 +68,28 @@
             <!-- Voeg extra afbeeldingen, stappen of code toe indien gewenst -->
         </article>
     </main>
+
     <footer>
         <nav>
-            <ul style="display:flex; justify-content: center; gap: 2em; list-style:none; padding: 0; margin: 2em 0 1em 0;">
+            <ul>
                 <li>&copy; <a href="about.html">DarkNet444</a></li>
                 <li><a href="#top">Back to top</a></li>
             </ul>
         </nav>
     </footer>
 
-    <script>
-        function copyToClipboard(elementId) {
-            const el = document.getElementById(elementId);
-            if (!el) return alert('Geen code gevonden om te kopiëren.');
-            const text = el.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Code gekopieerd naar klembord!');
-            }).catch(() => {
-                alert('Er ging iets mis met kopiëren.');
-            });
-        }
-    </script>
+ 
+<script>
+    function copyToClipboard(elementId) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        const text = el.innerText || el.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Command copied to clipboard!');
+        }).catch(() => {
+            alert('Failed to copy command.');
+        });
+    }
+</script>
 </body>
 </html>

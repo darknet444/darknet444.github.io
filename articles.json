@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Complete Windows Troubleshooting Guide & Tools",
+    "url": "windows-troubleshooting.html",
+    "img": "img/windows-troubleshoot-logo.png",
+    "imgAlt": "Windows Troubleshooting Logo",
+    "imgTitle": "Windows Troubleshooting",
+    "imgWidth": 150,
+    "imgHeight": 111,
+    "description": "In this article, you will learn how to diagnose and solve common Windows issues using free and built-in tools like HWiNFO64, CrystalDiskInfo, BatteryView, DISM, and more. Discover step-by-step methods to fix errors, monitor hardware, optimize performance, and keep your system healthy."
+  },
+  {
+    "title": "How to install and configure Ubuntu Desktop.",
+    "url": "ubuntu-desktop.html",
+    "img": "img/ubuntu-desktop-logo.png",
+    "imgAlt": "Ubuntu Desktop logo",
+    "imgTitle": "Ubuntu Desktop",
+    "imgWidth": 150,
+    "imgHeight": 111,
+    "description": "In this article, I will teach you how to install and configure <b><abbr title='Ubuntu Desktop 24.04 LTS'>Ubuntu Desktop</abbr></b>. You will learn how to set up your system, configure updates, and personalize your desktop environment."
+  },
+  {
+    "title": "This is how I install and configure an Ubuntu server.",
+    "url": "ubuntu-server.html",
+    "img": "img/ubuntu-server-logo.png",
+    "imgAlt": "Ubuntu server logo",
+    "imgTitle": "Ubuntu server",
+    "imgWidth": 235,
+    "imgHeight": 105,
+    "description": "I will teach you how to set up an <b><abbr title='Ubuntu server 24.04 LTSC'>Ubuntu server</abbr></b>. I will show you how I configure updates, time, and SSH. This is a good starting point for your first home lab. From there, you can start building higher."
+  },
+  {
+    "title": "How to install Pi-hole with Unbound.",
+    "url": "pihole-unbound.html",
+    "img": "img/pihole-logo.png",
+    "imgAlt": "Pi-hole logo",
+    "imgTitle": "Pi-hole DNS",
+    "imgWidth": 118,
+    "imgHeight": 114,
+    "img2": "img/unbound-logo.png",
+    "img2Alt": "Unbound DNS logo",
+    "img2Title": "Unbound DNS",
+    "img2Width": 118,
+    "img2Height": 114,
+    "description": "In these articles, I will teach you how to set up an <b><abbr title='Ubuntu server 24.04 LTSC'>Ubuntu server</abbr></b> with <b>Pi-hole</b> and <b>Unbound</b>. The benefits are that you will have an ad blocker for your whole home network and your own DNS server with DNSSEC, thanks to Unbound and Pi-hole. This will improve your privacy and speed up your local network."
+  },
+  {
+    "title": "How to set up NFS on Ubuntu server.",
+    "url": "nfs.html",
+    "img": "img/nfs-logo.png",
+    "imgAlt": "NFS logo",
+    "imgTitle": "Network File System (NFS)",
+    "imgWidth": 118,
+    "imgHeight": 118,
+    "img2": "img/ubuntu-logo.png",
+    "img2Alt": "Ubuntu logo",
+    "img2Title": "Ubuntu Logo 24.04",
+    "img2Width": 118,
+    "img2Height": 118,
+    "description": "Here I will teach you how you can host your own file server, also known as <b><abbr title='Network File System'>NFS</abbr></b>, and how you can install <b><abbr title='Ubuntu server 24.04 LTSC'>Ubuntu server</abbr></b>."
+  }
+
+  
+]
