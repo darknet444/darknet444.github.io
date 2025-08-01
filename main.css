@@ -69,6 +69,7 @@ nav {
 }
 .nav-list {
   display: flex;
+  flex-direction: row;   /* Altijd naast elkaar, ook op mobiel */
   gap: 12px;
   list-style: none;
   margin: 0;
@@ -109,6 +110,7 @@ nav {
   position: relative;
   height: 32px;
   width: 300px;
+  flex-direction: row;
 }
 .nav-search input[type="text"] {
   border: 2px solid var(--primary);
@@ -177,16 +179,16 @@ button, input[type="button"], input[type="submit"] {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--card-bg);           /* Thema achtergrond */
-  border: 2px solid var(--primary);     /* Thema border */
+  background: var(--card-bg);
+  border: 2px solid var(--primary);
   border-top: none;
-  border-radius: 0 0 0 0;
+  border-radius: 0;
   box-shadow: 0 2px 18px rgba(0,191,255,0.22);
   max-height: 220px;
   overflow-y: auto;
   z-index: 10000;
   display: none;
-  color: var(--text);                   /* Tekstkleur uit thema */
+  color: var(--text);
   font-size: 0.98rem;
   font-weight: 500;
 }
@@ -511,38 +513,45 @@ abbr {
     padding: 14px 5px;
   }
   nav {
-    flex-direction: column;
+    /* Geen column-direction, zodat .nav-list altijd row blijft */
     gap: 10px;
   }
   .nav-list {
-    flex-direction: column;
-    gap: 7px;
+    flex-direction: row;   /* Blijft naast elkaar op mobiel */
+    gap: 12px;
   }
-  .nav-list a,
-  .nav-search button,
-  .nav-search input[type="text"] {
-    width: 100%;
-    min-width: unset;
+  .nav-list a {
+    width: auto;
+    min-width: 70px;
     font-size: 1em;
-    margin: 0 0 6px 0;
-    height: 40px;
-    padding-left: 0;
-    padding-right: 0;
+    margin: 0 6px 0 0;
+    height: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
     border-radius: 0 !important;
     border: 2px solid var(--primary);
   }
   .nav-search {
-    margin-left: 0;
-    width: 100%;
+    margin-left: 8px;
+    width: auto;
     min-width: unset;
-    height: auto;
-    flex-direction: column;
-    align-items: stretch;
+    height: 32px;
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-search input[type="text"],
+  .nav-search button {
+    width: auto;
+    min-width: 60px;
+    font-size: 1em;
+    margin: 0;
+    height: 32px;
+    border-radius: 0 !important;
   }
   #searchResults {
     left: 0;
-    width: 100%;
-    font-size: 1em;
+    width: 300px;
+    font-size: 0.98rem;
   }
   textarea#message {
     min-height: 120px;
