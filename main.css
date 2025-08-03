@@ -414,7 +414,7 @@ article:focus-within h3 {
   }
 }
 
-/* NAVBAR HOME EN SEARCH BLIJVEN RONDZICHTELIJK OP MOBIEL */
+/* NAVBAR HOME EN SEARCH BLIJVEN RECHTSZICHTELIJK OP MOBIEL */
 @media (max-width: 700px) {
   nav {
     flex-direction: row;
@@ -422,25 +422,44 @@ article:focus-within h3 {
     margin-top: 0;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* BELANGRIJK! Verticale centrering */
   }
-  .nav-search {
-    margin-left: 0;
-    max-width: 180px;
-    height: 32px;
+  .nav-list {
+    flex-direction: row;
+    gap: 8px;
+    display: flex;
+    align-items: center; /* Verticale centrering van links */
   }
   .nav-list a {
     padding: 4px 10px;
     font-size: 0.93rem;
-    height: 28px;
+    height: 32px; /* GELIJKE HOOGTE ALS ZOEKBALK */
     min-width: 48px;
     margin: 0;
+    display: flex;
+    align-items: center; /* Verticale centrering van tekst */
   }
-  .nav-search input[type="text"],
+  .nav-search {
+    margin-left: 0;
+    max-width: 180px;
+    height: 32px; /* GELIJKE HOOGTE ALS NAV LINKS */
+    display: flex;
+    align-items: center;
+  }
+  .nav-search input[type="text"] {
+    height: 100%; /* Volledige hoogte */
+    line-height: normal;
+    padding: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
   .nav-search button {
-    height: 28px;
-    font-size: 0.93rem;
-    padding: 0 8px;
+    height: 100%;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -707,7 +726,6 @@ abbr {
     font-size: 1rem;
     margin-bottom: 6px;
   }
-  /* HIER NIET FLEX-COLUMN, MAAR FLEX-ROW OM HOME EN SEARCH RECHTS TE HOUDEN */
   nav {
     flex-direction: row;
     gap: 6px;
@@ -719,24 +737,39 @@ abbr {
   .nav-list {
     flex-direction: row;
     gap: 8px;
+    display: flex;
+    align-items: center;
   }
   .nav-list a {
     padding: 4px 10px;
     font-size: 0.93rem;
-    height: 28px;
+    height: 32px;
     min-width: 48px;
     margin: 0;
+    display: flex;
+    align-items: center;
   }
   .nav-search {
     margin-left: 0;
     max-width: 180px;
     height: 32px;
+    display: flex;
+    align-items: center;
   }
-  .nav-search input[type="text"],
+  .nav-search input[type="text"] {
+    height: 100%;
+    line-height: normal;
+    padding: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
   .nav-search button {
-    height: 28px;
-    font-size: 0.93rem;
-    padding: 0 8px;
+    height: 100%;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   main {
     max-width: 100vw;
