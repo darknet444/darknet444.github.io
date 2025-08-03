@@ -414,6 +414,36 @@ article:focus-within h3 {
   }
 }
 
+/* NAVBAR HOME EN SEARCH BLIJVEN RONDZICHTELIJK OP MOBIEL */
+@media (max-width: 700px) {
+  nav {
+    flex-direction: row;
+    gap: 6px;
+    margin-top: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-search {
+    margin-left: 0;
+    max-width: 180px;
+    height: 32px;
+  }
+  .nav-list a {
+    padding: 4px 10px;
+    font-size: 0.93rem;
+    height: 28px;
+    min-width: 48px;
+    margin: 0;
+  }
+  .nav-search input[type="text"],
+  .nav-search button {
+    height: 28px;
+    font-size: 0.93rem;
+    padding: 0 8px;
+  }
+}
+
 .logo-group {
   flex-shrink: 0;
   display: flex;
@@ -677,10 +707,14 @@ abbr {
     font-size: 1rem;
     margin-bottom: 6px;
   }
+  /* HIER NIET FLEX-COLUMN, MAAR FLEX-ROW OM HOME EN SEARCH RECHTS TE HOUDEN */
   nav {
-    flex-direction: column;
+    flex-direction: row;
     gap: 6px;
     margin-top: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
   .nav-list {
     flex-direction: row;
@@ -695,10 +729,8 @@ abbr {
   }
   .nav-search {
     margin-left: 0;
-    width: 100%;
-    max-width: 220px;
-    margin-top: 4px;
-    height: 28px;
+    max-width: 180px;
+    height: 32px;
   }
   .nav-search input[type="text"],
   .nav-search button {
