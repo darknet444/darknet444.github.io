@@ -398,6 +398,22 @@ article:focus-within h3 {
   gap: 16px;
   flex-wrap: wrap;
 }
+
+/* RESPONSIVE AANPASSING voor .article-content */
+@media (max-width: 700px) {
+  .article-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .logo-group img.logo {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .article-content > p {
+    margin-top: 8px;
+  }
+}
+
 .logo-group {
   flex-shrink: 0;
   display: flex;
@@ -478,13 +494,13 @@ article ul li a:active {
 /* ===== TABEL Styling met tfoot gelijk thead ===== */
 table a,
 table a:visited {
-  color: var(--primary) !important;
+  color: var(--primary);
   text-decoration: underline;
   transition: color 0.12s;
 }
 table a:hover,
 table a:focus {
-  color: var(--accent) !important;
+  color: var(--accent);
   outline: none;
 }
 table {
