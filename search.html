@@ -93,7 +93,6 @@ async function loadArticlesAndShowResults() {
         document.getElementById('results').textContent = 'Artikelen konden niet worden geladen.';
     }
 }
-
 function showResults() {
     const params = new URLSearchParams(window.location.search);
     const query = (params.get('query') || '').toLowerCase();
@@ -111,44 +110,59 @@ function showResults() {
     }
     matches.forEach(a => {
         const article = document.createElement('article');
-        const link = document.createElement('a');
-        link.href = a.url;
-        link.style.display = 'block';
-        link.style.marginBottom = '1em';
-        link.style.textDecoration = 'none';
-        link.style.color = 'inherit';
 
+        // Titel (h2) met link, altijd boven
         const h2 = document.createElement('h2');
-        h2.textContent = a.title;
-        h2.style.marginBottom = '0.6em';
-        link.appendChild(h2);
+        const titleLink = document.createElement('a');
+        titleLink.href = a.url;
+        titleLink.textContent = a.title;
+        titleLink.style.textDecoration = 'none';
+        titleLink.style.color = 'inherit';
+        h2.appendChild(titleLink);
+        article.appendChild(h2);
 
-        // Indien je in articles.json meer data hebt zoals img, voeg dat hier toe.
-        if (a.img) {
-            const img = document.createElement('img');
-            img.src = a.img;
-            img.alt = a.imgAlt || "";
-            img.title = a.imgTitle || "";
-            if (a.imgWidth) img.width = a.imgWidth;
-            if (a.imgHeight) img.height = a.imgHeight;
-            link.appendChild(img);
-        }
-        if (a.img2) {
-            const img2 = document.createElement('img');
-            img2.src = a.img2;
-            img2.alt = a.img2Alt || "";
-            img2.title = a.img2Title || "";
-            if (a.img2Width) img2.width = a.img2Width;
-            if (a.img2Height) img2.height = a.img2Height;
-            link.appendChild(img2);
+        // Container met logo's en tekst naast elkaar
+        const articleContent = document.createElement('div');
+        articleContent.className = 'article-content';
+
+        // Logo-group (link met logo's)
+        if (a.img || a.img2) {
+            const logoGroupLink = document.createElement('a');
+            logoGroupLink.href = a.url;
+            logoGroupLink.className = 'logo-group';
+
+            if (a.img) {
+                const img = document.createElement('img');
+                img.src = a.img;
+                img.alt = a.imgAlt || "";
+                img.title = a.imgTitle || "";
+                img.className = 'logo';
+                if (a.imgWidth) img.width = a.imgWidth;
+                if (a.imgHeight) img.height = a.imgHeight;
+                logoGroupLink.appendChild(img);
+            }
+            if (a.img2) {
+                const img2 = document.createElement('img');
+                img2.src = a.img2;
+                img2.alt = a.img2Alt || "";
+                img2.title = a.img2Title || "";
+                img2.className = 'logo';
+                if (a.img2Width) img2.width = a.img2Width;
+                if (a.img2Height) img2.height = a.img2Height;
+                logoGroupLink.appendChild(img2);
+            }
+            articleContent.appendChild(logoGroupLink);
         }
 
-        article.appendChild(link);
+        // Paragraaf tekst naast logo's
         if (a.description) {
             const p = document.createElement('p');
             p.innerHTML = a.description;
-            article.appendChild(p);
+            articleContent.appendChild(p);
         }
+
+        article.appendChild(articleContent);
+
         article.style.marginBottom = '2em';
         resultsDiv.appendChild(article);
     });
