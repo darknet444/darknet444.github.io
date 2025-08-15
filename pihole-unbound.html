@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="DarkNet444">
-    <meta name="description" content="This is a blog about how I install Pi-hole with Unbound.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="author" content="DarkNet444" />
+    <meta name="description" content="A complete beginner’s guide on how to install Pi-hole with Unbound on Ubuntu Server, using Cloudflare DNS-over-TLS for encrypted, secure, and privacy-friendly DNS resolution with DNSSEC and network-wide ad blocking." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pi-hole and Unbound</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="main.css" type="text/css" />
 </head>
 
 <body>
@@ -31,22 +30,25 @@
             <ol>
                 <li><a href="#Installing-ubuntu-server">Installing Ubuntu Server</a></li>
                 <li><a href="#Installing-and-Setting-up-Pi-hole">Installing &amp; Setting Up Pi-hole on Ubuntu Server</a></li>
-                <li><a href="#install-and-configure-unbound">Install and Configure Unbound</a></li>
+                <li><a href="#Installing-and-Configuring-Unbound">Installing and Configuring Unbound with DNS-over-TLS</a></li>
+                <li><a href="#Configuring-Pi-hole-to-Use-Unbound">Configuring Pi-hole to Use Unbound</a></li>
+                <li><a href="#Testing-the-Setup">Testing the Setup</a></li>
+                <li><a href="#Explanation-of-Cloudflare-DNS-over-TLS">Explanation of Cloudflare DNS-over-TLS</a></li>
+                <li><a href="#Final-Tips-and-Maintenance">Final Tips &amp; Maintenance</a></li>
             </ol>
         </article>
 
         <article>
             <h4>Description</h4>
             <p>
-                In these articles, I will teach you how to set up an
-                <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu server</abbr></b> with
-                <b>Pi-hole</b> and <b>Unbound</b>.
-                The benefits are that you will have an ad blocker for your whole home network and your own DNS server with DNSSEC,
-                thanks to Unbound and Pi-hole. This will improve your privacy and speed up your local network.
+                This guide will teach you how to set up an
+                <b><abbr title="Ubuntu server 24.04 LTSC">Ubuntu Server</abbr></b>
+                with <b>Pi-hole</b> and <b>Unbound</b>, forwarding DNS requests securely to
+                <b>Cloudflare using DNS-over-TLS (DoT)</b>. You will learn step-by-step how to install, configure, and verify this setup.
+                The result is a privacy-friendly, network-wide ad blocker with encrypted DNS traffic and DNSSEC validation, improving both security and speed.
             </p>
-
             <table>
-                <caption>Here is a table with some statistics from my own Pi-hole server.</caption>
+                <caption>Example statistics from my own Pi-hole server.</caption>
                 <thead>
                     <tr>
                         <th scope="col">Comments</th>
@@ -80,68 +82,336 @@
         </article>
 
         <article id="Installing-ubuntu-server">
-            <h4>Installing Ubuntu Server</h4>
+            <h2>Step 1: Installing Ubuntu Server</h2>
             <p>
-                I have already written an article on how to set up an
-                <a href="ubuntu-server.html">Installing &amp; Configuring Ubuntu Server</a>. Check it out.
+                Begin with a fresh Ubuntu Server installation. If you haven’t installed Ubuntu Server yet, you can follow my detailed guide
+                <a href="/ubuntu-server.html" title="Ubuntu Server installation guide">here</a> which walks you through downloading and installing the latest Ubuntu Server LTS ISO step-by-step. Make sure that your server has a static IP address configured for network stability.
             </p>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/ubuntu-install-wizard.png"
+                alt="Ubuntu Install Wizard"
+                title="Ubuntu Server installatie wizard"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+            <p>
+                After installing Ubuntu, update your system by running:
+            </p>
+            <div class="code-block">
+                <pre id="updateOS"><code>sudo apt update
+sudo apt upgrade -y</code></pre>
+                <button class="copy-button" onclick="copyCode('updateOS')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/terminal-update-upgrade.png"
+                alt="Terminal Update/Upgrade"
+                title="Terminal: Ubuntu updaten"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+            <p>This ensures all packages are updated with the latest security patches.</p>
         </article>
 
         <article id="Installing-and-Setting-up-Pi-hole">
-            <h4>Installing &amp; Setting Up Pi-hole on Ubuntu Server</h4>
+            <h2>Step 2: Installing &amp; Setting Up Pi-hole on Ubuntu Server</h2>
+            <p>Pi-hole will function as your network-wide ad blocker and DNS server. Follow these steps:</p>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-logo.png"
+                alt="Pi-hole Logo"
+                title="Pi-hole logo"
+                style="max-width:200px; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
 
-            <p>To install Pi-hole, run the following command:</p>
-            <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
-                <pre style="margin:0; white-space: pre-wrap;"><code id="installPihole">curl -sSL https://install.pi-hole.net | bash</code></pre>
-                <button onclick="copyToClipboard('installPihole')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
+            <h3>2.1 Install <code>curl</code> if not already installed:</h3>
+            <div class="code-block">
+                <pre id="installCurl"><code>sudo apt install curl -y</code></pre>
+                <button class="copy-button" onclick="copyCode('installCurl')">📋 Copy</button>
             </div>
 
-            <img class="img"
-                src="img/pihole-and-unbound/pihole-install-curl.png"
-                alt="Running curl -sSL https://install.pi-hole.net | bash"
-                title="Installing Pi-hole in tty"
-                style="max-width:100%; height:auto; display:block; margin:1em auto;"
+            <h3>2.2 Run the Pi-hole installation script:</h3>
+            <div class="code-block">
+                <pre id="installPihole"><code>curl -sSL https://install.pi-hole.net | bash</code></pre>
+                <button class="copy-button" onclick="copyCode('installPihole')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-install-script.png"
+                alt="Pi-hole Install Script"
+                title="Pi-hole installatie via script"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <h3>2.3 Pi-hole Setup Wizard:</h3>
+            <ul>
+                <li>When prompted, select your network interface (common names are <code>eth0</code> or <code>enp*</code>).</li>
+                <li>Confirm or set a static IP address to ensure reliable DNS resolution.</li>
+                <li>Select any temporary DNS provider (You will change this later to Unbound).</li>
+                <li>Enable the web interface and logging (recommended).</li>
+                <li>At the end, note down your admin password and the web interface address (e.g. <code>http://YOUR_SERVER_IP/admin</code>).</li>
+            </ul>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-setup-wizard.png"
+                alt="Pi-hole Setup Wizard"
+                title="Pi-hole setup wizard interface"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <h3>2.4 Set or change the Pi-hole admin password:</h3>
+            <div class="code-block">
+                <pre id="adminPW"><code>pihole -a -p</code></pre>
+                <button class="copy-button" onclick="copyCode('adminPW')">📋 Copy</button>
+            </div>
+            <p>Enter a new password, which you will use to access the Pi-hole web interface.</p>
+
+            <h3>2.5 Access the Pi-hole web dashboard:</h3>
+            <p>Open your browser and visit <code>http://YOUR_SERVER_IP/admin</code> and log in with your password.</p>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-dashboard.png"
+                alt="Pi-hole Web Dashboard"
+                title="Pi-hole web dashboard"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
                 loading="lazy">
         </article>
 
-        <article id="install-and-configure-unbound">
-            <h4>Install and Configure Unbound</h4>
+        <article id="Installing-and-Configuring-Unbound">
+            <h2>Step 3: Installing and Configuring Unbound</h2>
             <p>
-                <!-- Voeg hier jouw instructies toe voor installatie en configuratie van Unbound -->
-                This section can be expanded with commands, guides, and tips on setting up Unbound.
+                Unbound is a local recursive DNS resolver that performs caching and DNSSEC validation. In this setup, Unbound securely forwards DNS queries to Cloudflare using DNS-over-TLS.
             </p>
-            <div class="code-block" style="overflow-x:auto; margin-bottom:1em;">
-                <pre style="margin:0; white-space: pre-wrap;"><code id="unboundSetup">sudo apt install unbound</code></pre>
-                <button onclick="copyToClipboard('unboundSetup')" class="copy-button" style="margin-top:0.5em;">📋 Copy</button>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/unbound-logo.png"
+                alt="Unbound Logo"
+                title="Unbound logo"
+                style="max-width:150px; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <h3>3.1 Install Unbound:</h3>
+            <div class="code-block">
+                <pre id="installUnbound"><code>sudo apt install unbound -y</code></pre>
+                <button class="copy-button" onclick="copyCode('installUnbound')">📋 Copy</button>
             </div>
+
+            <h3>3.2 Start Unbound and check its status and version:</h3>
+            <div class="code-block">
+                <pre id="startUnbound"><code>sudo systemctl start unbound
+sudo systemctl enable unbound
+sudo systemctl status unbound
+unbound -V</code></pre>
+                <button class="copy-button" onclick="copyCode('startUnbound')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/unbound-status.png"
+                alt="Unbound Status Terminal"
+                title="Unbound status controleren"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <h3>3.3 Configure Unbound (enable modular configs):</h3>
+            <p>Edit the main configuration file with nano:</p>
+            <div class="code-block">
+                <pre id="editMainUnboundConf"><code>sudo nano /etc/unbound/unbound.conf</code></pre>
+                <button class="copy-button" onclick="copyCode('editMainUnboundConf')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/unbound-conf-nano.png"
+                alt="Unbound config in Nano"
+                title="Unbound config openen in Nano editor"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <p>Ensure the following line is present (add it if missing):</p>
+            <div class="code-block">
+                <pre id="includeLine"><code>include-toplevel: "/etc/unbound/unbound.conf.d/*.conf"</code></pre>
+                <button class="copy-button" onclick="copyCode('includeLine')">📋 Copy</button>
+            </div>
+
+            <h3>3.4 Create Pi-hole Integration Config:</h3>
+            <p>Make a new config file:</p>
+            <div class="code-block">
+                <pre id="editUnbound"><code>sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf</code></pre>
+                <button class="copy-button" onclick="copyCode('editUnbound')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-unbound-conf-nano.png"
+                alt="Pi-hole Unbound config nano"
+                title="Pi-hole config bestand in nano"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+            <p>Paste <b>all</b> of this into the new file (every line, don’t skip anything):</p>
+            <div class="code-block">
+                <pre id="serverConfig"><code>server:
+    verbosity: 0
+    interface: 127.0.0.1
+    port: 5335
+    do-ip4: yes
+    do-udp: yes
+    do-tcp: yes
+    do-ip6: no
+    prefer-ip6: no
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: no
+    edns-buffer-size: 1232
+    prefetch: yes
+    num-threads: 1
+    so-rcvbuf: 1m
+    private-address: 192.168.0.0/16
+    private-address: 169.254.0.0/16
+    private-address: 172.16.0.0/12
+    private-address: 10.0.0.0/8
+    private-address: fd00::/8
+    private-address: fe80::/10
+    private-address: 192.0.2.0/24
+    private-address: 198.51.100.0/24
+    private-address: 203.0.113.0/24
+    private-address: 255.255.255.255/32
+    private-address: 2001:db8::/32
+    tcp-upstream: yes
+    tls-upstream: yes
+    tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
+
+forward-zone:
+    name: "."
+    forward-tls-upstream: yes
+    forward-addr: 1.1.1.1@853#cloudflare-dns.com
+    forward-addr: 1.0.0.1@853#cloudflare-dns.com
+</code></pre>
+                <button class="copy-button" onclick="copyCode('serverConfig')">📋 Copy</button>
+            </div>
+            <p>Save the file (Ctrl+O), then exit nano (Ctrl+X).</p>
+
+            <h3>3.5 Restart Unbound service:</h3>
+            <div class="code-block">
+                <pre id="restartUnbound"><code>sudo systemctl restart unbound && sudo systemctl status unbound </code></pre>
+                <button class="copy-button" onclick="copyCode('restartUnbound')">📋 Copy</button>
+            </div>
+            <p>Make sure the service is active and running without errors.</p>
+        </article>
+
+        <article id="Configuring-Pi-hole-to-Use-Unbound">
+            <h2>Step 4: Configure Pi-hole to Use Unbound</h2>
+            <p>Log into the Pi-hole web interface (<code>http://YOUR_SERVER_IP/admin</code>) and configure it to send DNS queries to Unbound:</p>
+            <ul>
+                <li>Go to <strong>Settings &gt; DNS</strong></li>
+                <li>Uncheck all default upstream DNS providers</li>
+                <li>Under <strong>Custom DNS (IPv4)</strong>, enter: <code>127.0.0.1#5335</code></li>
+                <li>Click save to apply changes.</li>
+            </ul>
+            <p>Pi-hole now forwards all DNS requests to Unbound running locally.</p>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-settings-dns.png"
+                alt="Pi-hole DNS instellingen"
+                title="Pi-hole DNS settings configureren"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+        </article>
+
+        <article id="Testing-the-Setup">
+            <h2>Step 5: Testing the Setup</h2>
+            <h3>5.1 Test DNS resolution and DNSSEC validation with Unbound</h3>
+            <p>Run these commands in your terminal one by one (enter each command separately):</p>
+            <div class="code-block">
+                <pre id="testUnbound"><code>dig @127.0.0.1 -p 5335 pi-hole.net
+
+dig @127.0.0.1 -p 5335 sigfail.verteiltesysteme.net
+
+dig @127.0.0.1 -p 5335 sigok.verteiltesysteme.net</code></pre>
+                <button class="copy-button" onclick="copyCode('testUnbound')">📋 Copy</button>
+            </div>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/dns-test-dig-success.png"
+                alt="DNS Test Dig Success"
+                title="DNSSEC test met dig terminal"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+
+            <p>The <code>sigok</code> query should return an <strong>ad</strong> (Authenticated Data) flag indicating DNSSEC success. The <code>sigfail</code> query should fail (SERVFAIL), meaning DNSSEC is enforced.</p>
+
+            <h3>5.2 Test Pi-hole ad blocking</h3>
+            <ul>
+                <li>Set your device to use Pi-hole as DNS server.</li>
+                <li>Browse ad-heavy websites and notice ads are blocked.</li>
+                <li>Check Pi-hole dashboard for blocked queries and statistics.</li>
+            </ul>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/adblock-test.png"
+                alt="Pi-hole blokkeert advertenties"
+                title="Adblock test Pi-hole dashboard"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+        </article>
+
+        <article id="Explanation-of-Cloudflare-DNS-over-TLS">
+            <h2>Step 6: Explanation of Cloudflare DNS-over-TLS</h2>
+            <p>Unbound forwards DNS queries encrypted over TLS to Cloudflare DNS servers at IPs <code>1.1.1.1</code> and <code>1.0.0.1</code> on port 853.</p>
+            <ul>
+                <li>This prevents network observers and ISPs from snooping on your DNS traffic.</li>
+                <li>It ensures secure and private DNS resolution.</li>
+                <li>DNSSEC validation adds an extra layer of authenticity.</li>
+            </ul>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/cloudflare-dns-schema.png"
+                alt="Cloudflare DNS schema"
+                title="Schema: DNS over TLS naar Cloudflare"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
+        </article>
+
+        <article id="Final-Tips-and-Maintenance">
+            <h2>Step 7: Final Tips &amp; Maintenance</h2>
+            <ul>
+                <li>Keep your Ubuntu system and Pi-hole updated regularly.</li>
+                <li>Use <code>pihole -up</code> to update Pi-hole via command line.</li>
+                <li>Expand blocklists through Pi-hole’s web interface as needed.</li>
+                <li>Enable Pi-hole DHCP if your router does not support custom DNS.</li>
+                <li>Monitor Unbound and system logs for troubleshooting.</li>
+            </ul>
+            <p>Well done! Your network now benefits from fast, private, and secure DNS with ad blocking.</p>
+            <img
+                class="img"
+                src="img/pihole-and-unbound/pihole-update-terminal.png"
+                alt="Pi-hole update terminal"
+                title="Pi-hole updaten via terminal"
+                style="max-width:100%; height:auto; border:1px solid #ccc; display:block; margin:1em auto;"
+                loading="lazy">
         </article>
     </main>
-    
-<footer>
-  <div class="footer-handle"></div>
-  <div class="footer-content">
-    <nav class="nav-list">
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#top">Back to top</a></li>
-        <li><a href="contact-me.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</footer>
 
-    
-<script>
-    function copyToClipboard(elementId) {
-        const el = document.getElementById(elementId);
-        if (!el) return;
-        const text = el.innerText || el.textContent;
-        navigator.clipboard.writeText(text).then(() => {
-            alert('Command copied to clipboard!');
-        }).catch(() => {
-            alert('Failed to copy command.');
-        });
-    }
-</script>
+    <footer>
+        <div class="footer-handle"></div>
+        <div class="footer-content">
+            <nav class="nav-list">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#top">Back to top</a></li>
+                    <li><a href="contact-me.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        function copyCode(elementId) {
+            var codeBlock = document.getElementById(elementId);
+            if (!codeBlock) return;
+            var text = codeBlock.innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Code copied to clipboard!');
+            }, function() {
+                alert('Failed to copy code.');
+            });
+        }
+    </script>
 </body>
 </html>
